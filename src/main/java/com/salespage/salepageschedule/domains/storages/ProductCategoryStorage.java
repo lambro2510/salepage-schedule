@@ -1,0 +1,34 @@
+package com.salespage.salepageschedule.domains.storages;
+
+import com.salespage.salepageschedule.domains.entities.ProductCategory;
+import org.bson.types.ObjectId;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Component
+public class ProductCategoryStorage extends BaseStorage {
+  public List<ProductCategory> findByCreatedBy(String username) {
+    return productCategoryRepository.findByCreatedBy(username);
+  }
+
+  public ProductCategory findByCreatedByAndId(String username, String id) {
+    return productCategoryRepository.findByCreatedByAndId(username, new ObjectId(id));
+  }
+
+  public void save(ProductCategory productCategory) {
+    productCategoryRepository.save(productCategory);
+  }
+
+  public ProductCategory findById(String id) {
+    return productCategoryRepository.findById(new ObjectId(id)).get();
+  }
+
+  public void delete(ProductCategory productCategory) {
+    productCategoryRepository.delete(productCategory);
+  }
+
+  public List<ProductCategory> findByCategoryName(String categoryName) {
+    return productCategoryRepository.findByCategoryName(categoryName);
+  }
+}
