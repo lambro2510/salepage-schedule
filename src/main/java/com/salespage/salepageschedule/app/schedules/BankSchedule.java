@@ -19,14 +19,14 @@ public class BankSchedule {
   @Autowired
   private TpBankService tpBankService;
 
-  @Scheduled(fixedDelay = 1000 * 15) //15s 1 lần đồng bộ
+  @Scheduled(initialDelay = 10000 ,fixedDelay = 1000 * 15) //15s 1 lần đồng bộ
   public void saveBankTransaction() throws IOException {
     log.info("-----async transaction-----start");
     bankService.saveBankTransaction();
     log.info("-----async transaction-----end");
   }
 
-  @Scheduled(fixedDelay = 1000 * 30) //30s 1 lần
+  @Scheduled(initialDelay = 20000 ,fixedDelay = 1000 * 30) //30s 1 lần
   public void checkNotResolveTransaction() throws Exception {
     log.info("-----checkNotResolveTransaction-----start");
     bankService.checkNotResolveTransaction();
