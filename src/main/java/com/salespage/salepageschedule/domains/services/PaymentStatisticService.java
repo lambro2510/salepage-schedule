@@ -34,12 +34,13 @@ public class PaymentStatisticService extends BaseService {
         PaymentStatistic paymentStatistic = paymentStatisticStorage.findByDailyAndProductId(current, product.getId().toHexString());
         if (paymentStatistic == null) {
           paymentStatistic = new PaymentStatistic();
+          paymentStatistic.setDaily(current);
           paymentStatistic.setProductId(product.getId().toHexString());
           paymentStatistic.setProductName(product.getProductName());
         }
         TotalPaymentStatisticResponse totalPaymentStatisticResponse = lookupAggregation(product.getId().toHexString(), current, current.plusDays(1));
         paymentStatistic.partnerFromStatistic(totalPaymentStatisticResponse);
-        paymentStatistic.setDaily(current);
+
         paymentStatisticStorage.save(paymentStatistic);
         statisticCheckpoint.setCheckPoint(current);
         statisticCheckpointStorage.save(statisticCheckpoint);
