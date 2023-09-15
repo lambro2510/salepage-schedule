@@ -5,9 +5,12 @@ import com.salespage.salepageschedule.app.responses.Statistic.TotalPaymentStatis
 import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import javax.persistence.Index;
+import javax.persistence.UniqueConstraint;
 import java.time.LocalDate;
 
 @Document("payment_statistic")
@@ -18,6 +21,7 @@ public class PaymentStatistic {
 
   @Field("daily")
   @JsonFormat(pattern = "dd-MM-yyyy")
+  @Indexed(name = "daily_index", unique = true)
   private LocalDate daily;
 
   @Field("product_id")

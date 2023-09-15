@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class DateUtils {
 
-  private static final ZoneId DEFAULT_ZONE_ID = ZoneId.of("UTC");
+  private static final ZoneId DEFAULT_ZONE_ID = ZoneId.of("Asia/Ho_Chi_Minh");
 //  private static final ZoneId ZONE_ID_UTC = ZoneId.of("UTC");
 
   public static String ZONE_MYANMAR = "Asia/Yangon";
