@@ -43,9 +43,9 @@ public class PaymentStatisticService extends BaseService {
         paymentStatistic.partnerFromStatistic(totalPaymentStatisticResponse);
 
         paymentStatisticStorage.save(paymentStatistic);
-        statisticCheckpoint.setCheckPoint(current);
-        statisticCheckpointStorage.save(statisticCheckpoint);
       }
+      statisticCheckpoint.setCheckPoint(current);
+      statisticCheckpointStorage.save(statisticCheckpoint);
     }
   }
 
