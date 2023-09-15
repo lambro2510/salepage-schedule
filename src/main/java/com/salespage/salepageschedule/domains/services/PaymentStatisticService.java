@@ -37,6 +37,7 @@ public class PaymentStatisticService extends BaseService {
           paymentStatistic.setDaily(current);
           paymentStatistic.setProductId(product.getId().toHexString());
           paymentStatistic.setProductName(product.getProductName());
+          paymentStatistic.create();
         }
         TotalPaymentStatisticResponse totalPaymentStatisticResponse = lookupAggregation(product.getId().toHexString(), current, current.plusDays(1));
         paymentStatistic.partnerFromStatistic(totalPaymentStatisticResponse);
@@ -57,12 +58,13 @@ public class PaymentStatisticService extends BaseService {
       PaymentStatistic paymentStatistic = paymentStatisticStorage.findByDailyAndProductId(startDay, product.getId().toHexString());
       if (paymentStatistic == null) {
         paymentStatistic = new PaymentStatistic();
+        paymentStatistic.setDaily(startDay);
         paymentStatistic.setProductId(product.getId().toHexString());
         paymentStatistic.setProductName(product.getProductName());
+        paymentStatistic.create();
       }
       TotalPaymentStatisticResponse totalPaymentStatisticResponse = lookupAggregation(product.getId().toHexString(), startDay, endDay);
       paymentStatistic.partnerFromStatistic(totalPaymentStatisticResponse);
-      paymentStatistic.setDaily(startDay);
       paymentStatisticStorage.save(paymentStatistic);
     }
 
