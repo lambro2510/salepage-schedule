@@ -33,6 +33,9 @@ public class PaymentStatistic {
   @Field("total_user")
   private Long totalUser = 0L;
 
+  @Field("total_view")
+  private Long totalView = 0L;
+
   @Field("total_buy")
   private Long totalBuy = 0L;
 
