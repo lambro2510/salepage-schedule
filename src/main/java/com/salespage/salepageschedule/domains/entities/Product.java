@@ -41,6 +41,12 @@ public class Product extends BaseEntity {
   @Field(value = "price")
   private Double price;
 
+  @Field(value = "sell_price")
+  private Double sellPrice;
+
+  @Field(value = "discount_percent")
+  private Double discountPercent;
+
   @Field("rate")
   private Rate rate = new Rate();
 
