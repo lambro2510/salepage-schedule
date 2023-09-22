@@ -25,46 +25,6 @@ public class StatisticSchedule {
   private PaymentStatisticService paymentStatisticService;
 
   @Scheduled(initialDelay = 5000 ,fixedDelay = 1000 * 30) //30s 1 lần
-  public void asyncTransactionStatisticToday() {
-    log.info("asyncTransactionStatisticToday -> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
-    transactionStatisticService.statisticToday();
-  }
-
-  @Scheduled(initialDelay = 10000 ,fixedDelay = 1000 * 60 * 60 * 4) //4h 1 lần
-  public void asyncTransactionStatisticPeriodDay() {
-    log.info("asyncTransactionStatisticPeriodDay -> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
-    transactionStatisticService.statisticPeriodDate();
-  }
-
-  @Scheduled(initialDelay = 20000 ,fixedDelay = 1000 * 60 * 10) //10p 1 lần
-  public void asyncTransactionStatisticWeek() {
-    log.info("asyncTransactionStatisticWeek -> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
-    transactionStatisticService.statisticWeek();
-  }
-
-  @Scheduled(initialDelay = 30000 ,fixedDelay = 1000 * 60 * 60 * 24) //1 ngày 1 lần
-  public void asyncTransactionStatisticPeriodWeek() {
-    log.info("asyncTransactionStatisticPeriodWeek -> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
-    transactionStatisticService.statisticPeriodWeek();
-  }
-
-  @Scheduled(initialDelay = 40000 ,fixedDelay = 1000 * 60 * 60 * 24) //30s 1 lần
-  public void asyncTransactionStatisticMonth() {
-    log.info("asyncTransactionStatisticMonth -> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
-    transactionStatisticService.statisticMonth();
-  }
-
-  @Scheduled(initialDelay = 50000 ,fixedDelay = 1000 * 60 * 60 * 24 * 7) //1 tuần 1 lần
-  public void asyncTransactionStatisticPeriodMonth() {
-    log.info("asyncTransactionStatisticPeriodMonth -> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
-    transactionStatisticService.statisticPeriodMonth();
-  }
-
-  @Scheduled(initialDelay = 60000 ,fixedDelay = 1000 * 60 * 60 * 24 * 10) //10 ngày 1 lần
-  public void asyncTransactionStatisticYear() {
-    log.info("asyncTransactionStatisticYear -> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
-    transactionStatisticService.statisticYear();
-  }
 
   @Scheduled(initialDelay = 70000 ,fixedDelay = 1000 * 60 * 60 * 4) //4h 1 lần
   public void checkInStatistic() {
@@ -72,7 +32,7 @@ public class StatisticSchedule {
     checkInDailyStatisticService.statisticUserCheckIn();
   }
 
-  @Scheduled(cron = "*/30 * * * * *") //1p 1 lần
+  @Scheduled(cron = "*/30 * * * * *") //30 1 lần
   public void paymentStatisticToday() {
     log.info("paymentStatistic new-> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
     paymentStatisticService.asyncStatisticToday();
@@ -83,4 +43,17 @@ public class StatisticSchedule {
     log.info("paymentStatistic new-> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
     paymentStatisticService.asyncStatisticPreDay();
   }
+
+  @Scheduled(cron = "0 0 * * * *") // Mỗi 1 giờ
+  public void updateToNormalProduct() {
+    log.info("updateToNormalProduct new-> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
+    paymentStatisticService.updateToNormalProduct();
+  }
+
+  @Scheduled(cron = "0 */15 * * * *") // Mỗi 15 phút
+  public void updateToHotProduct() {
+    log.info("updateToHotProduct new-> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
+    paymentStatisticService.updateToHotProduct();
+  }
+
 }

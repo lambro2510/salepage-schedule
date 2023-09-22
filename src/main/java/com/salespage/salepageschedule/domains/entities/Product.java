@@ -59,6 +59,8 @@ public class Product extends BaseEntity {
   @Field("detail")
   private ProductDetail detail;
 
+  @Field("is_hot")
+  private Boolean isHot;
 
   @Data
   public static class ProductDetail {

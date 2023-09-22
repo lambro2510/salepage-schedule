@@ -2,6 +2,7 @@ package com.salespage.salepageschedule.domains.storages;
 
 import com.salespage.salepageschedule.domains.entities.Product;
 import com.salespage.salepageschedule.domains.utils.CacheKey;
+import com.salespage.salepageschedule.domains.utils.Helper;
 import lombok.extern.log4j.Log4j2;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Page;
@@ -75,4 +76,7 @@ public class ProductStorage extends BaseStorage {
     return productRepository.existsById(new ObjectId(refId));
   }
 
+  public List<Product> findByIdIn(List<String> productIds) {
+    return productRepository.findByIdIn(Helper.convertListStringToListObjectId(productIds));
+  }
 }

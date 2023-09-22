@@ -9,13 +9,11 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import javax.persistence.Index;
-import javax.persistence.UniqueConstraint;
 import java.time.LocalDate;
 
 @Document("payment_statistic")
 @Data
-public class PaymentStatistic {
+public class ProductStatistic {
   @Id
   private ObjectId id;
 

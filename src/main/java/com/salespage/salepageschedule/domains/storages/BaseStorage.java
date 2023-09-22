@@ -81,7 +81,7 @@ public class BaseStorage {
   protected ShipperRepository shipperRepository;
 
   @Autowired
-  protected PaymentStatisticRepository paymentStatisticRepository;
+  protected ProductStatisticRepository productStatisticRepository;
 
   @Autowired
   protected MongoTemplate mongoTemplate;

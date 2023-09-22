@@ -2,7 +2,7 @@ package com.salespage.salepageschedule.domains.services;
 
 import com.salespage.salepageschedule.app.responses.Statistic.TotalPaymentStatisticResponse;
 import com.salespage.salepageschedule.domains.Constants;
-import com.salespage.salepageschedule.domains.entities.PaymentStatistic;
+import com.salespage.salepageschedule.domains.entities.ProductStatistic;
 import com.salespage.salepageschedule.domains.entities.Product;
 import com.salespage.salepageschedule.domains.entities.StatisticCheckpoint;
 import com.salespage.salepageschedule.domains.utils.DateUtils;
@@ -15,7 +15,10 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
 
@@ -31,9 +34,9 @@ public class PaymentStatisticService extends BaseService {
     }
     for (LocalDate current = statisticCheckpoint.getCheckPoint(); current.isBefore(DateUtils.now().toLocalDate()); current = current.plusDays(1)) {
       for (Product product : products) {
-        PaymentStatistic paymentStatistic = paymentStatisticStorage.findByDailyAndProductId(current, product.getId().toHexString());
+        ProductStatistic paymentStatistic = productStatisticStorage.findByDailyAndProductId(current, product.getId().toHexString());
         if (paymentStatistic == null) {
-          paymentStatistic = new PaymentStatistic();
+          paymentStatistic = new ProductStatistic();
           paymentStatistic.setDaily(current);
           paymentStatistic.setProductId(product.getId().toHexString());
           paymentStatistic.setProductName(product.getProductName());
@@ -42,7 +45,7 @@ public class PaymentStatisticService extends BaseService {
         TotalPaymentStatisticResponse totalPaymentStatisticResponse = lookupAggregation(product.getId().toHexString(), current, current.plusDays(1));
         paymentStatistic.partnerFromStatistic(totalPaymentStatisticResponse);
 
-        paymentStatisticStorage.save(paymentStatistic);
+        productStatisticStorage.save(paymentStatistic);
       }
       statisticCheckpoint.setCheckPoint(current);
       statisticCheckpointStorage.save(statisticCheckpoint);
@@ -55,9 +58,9 @@ public class PaymentStatisticService extends BaseService {
     List<Product> products = productStorage.findAll();
 
     for (Product product : products) {
-      PaymentStatistic paymentStatistic = paymentStatisticStorage.findByDailyAndProductId(startDay, product.getId().toHexString());
+      ProductStatistic paymentStatistic = productStatisticStorage.findByDailyAndProductId(startDay, product.getId().toHexString());
       if (paymentStatistic == null) {
-        paymentStatistic = new PaymentStatistic();
+        paymentStatistic = new ProductStatistic();
         paymentStatistic.setDaily(startDay);
         paymentStatistic.setProductId(product.getId().toHexString());
         paymentStatistic.setProductName(product.getProductName());
@@ -65,7 +68,7 @@ public class PaymentStatisticService extends BaseService {
       }
       TotalPaymentStatisticResponse totalPaymentStatisticResponse = lookupAggregation(product.getId().toHexString(), startDay, endDay);
       paymentStatistic.partnerFromStatistic(totalPaymentStatisticResponse);
-      paymentStatisticStorage.save(paymentStatistic);
+      productStatisticStorage.save(paymentStatistic);
     }
 
   }
@@ -88,16 +91,19 @@ public class PaymentStatisticService extends BaseService {
     return response;
   }
 
+  public void updateToHotProduct(){
+    List<ProductStatistic> productStatistics = productStatisticStorage.findTop10ByOrderByTotalViewDesc();
+    List<Product> newHotProduct =  productStorage.findByIdIn(productStatistics.stream().map(ProductStatistic::getProductId).collect(Collectors.toList()));
+    newHotProduct.forEach(k -> k.setIsHot(true));
+    productStorage.saveAll(newHotProduct);
+  }
 
-  private void partnerToResponse(TotalPaymentStatisticResponse statistic, PaymentStatistic paymentStatistic) {
-    statistic.setTotalBuy(statistic.getTotalBuy() + paymentStatistic.getTotalBuy());
-    statistic.setTotalPurchase(statistic.getTotalPurchase() + paymentStatistic.getTotalPurchase());
-    statistic.setTotalUser(statistic.getTotalUser() + paymentStatistic.getTotalUser());
-    TotalPaymentStatisticResponse.Daily daily = new TotalPaymentStatisticResponse.Daily();
-    daily.setDaily(paymentStatistic.getDaily());
-    daily.setTotalBuy(paymentStatistic.getTotalBuy());
-    daily.setTotalPurchase(paymentStatistic.getTotalPurchase());
-    daily.setTotalUser(paymentStatistic.getTotalUser());
-    statistic.getDailies().add(daily);
+  public void updateToNormalProduct(){
+    List<Product> products = productStorage.findAll();
+    products.forEach(k->k.setIsHot(false));
+    List<ProductStatistic> productStatistics = productStatisticStorage.findTop10ByOrderByTotalViewDesc();
+    Map<String, ProductStatistic>  map = productStatistics.stream().collect(Collectors.toMap(ProductStatistic::getProductId, Function.identity()));
+    products.stream().filter(k -> map.get(k.getId().toHexString()) != null).forEach(k->k.setIsHot(true));
+    productStorage.saveAll(products);
   }
 }

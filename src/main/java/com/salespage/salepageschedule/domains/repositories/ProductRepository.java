@@ -24,4 +24,6 @@ public interface ProductRepository extends MongoRepository<Product, ObjectId> {
   List<Product> findTop10ByCategoryIdOrderByCreatedAtDesc(String typeName);
 
   List<Product> findByCategoryId(String categoryId);
+
+  List<Product> findByIdIn(List<ObjectId> objectIds);
 }
