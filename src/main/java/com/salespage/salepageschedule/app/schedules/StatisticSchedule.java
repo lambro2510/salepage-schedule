@@ -35,7 +35,7 @@ public class StatisticSchedule {
   @Scheduled(cron = "*/30 * * * * *") //30 1 lần
   public void paymentStatisticToday() {
     log.info("paymentStatistic new-> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
-//    paymentStatisticService.asyncStatisticToday();
+    paymentStatisticService.asyncStatisticToday();
   }
 
   @Scheduled(cron = "* */1 * * * *") //1p 1 lần
