@@ -37,7 +37,7 @@ public class PaymentStatisticService extends BaseService {
         ProductStatistic paymentStatistic = productStatisticStorage.findByDailyAndProductId(current, product.getId().toHexString());
         if (paymentStatistic == null) {
           paymentStatistic = new ProductStatistic();
-          paymentStatistic.setDaily(current);
+          paymentStatistic.setDaily(current.toString());
           paymentStatistic.setProductId(product.getId().toHexString());
           paymentStatistic.setProductName(product.getProductName());
         }else{
@@ -62,7 +62,7 @@ public class PaymentStatisticService extends BaseService {
       ProductStatistic paymentStatistic = productStatisticStorage.findByDailyAndProductId(startDay, product.getId().toHexString());
       if (paymentStatistic == null) {
         paymentStatistic = new ProductStatistic();
-        paymentStatistic.setDaily(startDay);
+        paymentStatistic.setDaily(startDay.toString());
         paymentStatistic.setProductId(product.getId().toHexString());
         paymentStatistic.setProductName(product.getProductName());
       }else{

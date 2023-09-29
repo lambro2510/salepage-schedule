@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -18,9 +19,8 @@ public class ProductStatistic {
   private ObjectId id;
 
   @Field("daily")
-  @JsonFormat(pattern = "dd-MM-yyyy")
   @Indexed(name = "daily_index", unique = true)
-  private LocalDate daily;
+  private String daily;
 
   @Field("product_id")
   private String productId;

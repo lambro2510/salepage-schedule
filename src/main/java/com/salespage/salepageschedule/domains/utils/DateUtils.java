@@ -8,9 +8,6 @@ import java.util.Date;
 public class DateUtils {
 
   private static final ZoneId DEFAULT_ZONE_ID = ZoneId.of("Asia/Ho_Chi_Minh");
-//  private static final ZoneId ZONE_ID_UTC = ZoneId.of("UTC");
-
-  public static String ZONE_MYANMAR = "Asia/Yangon";
 
   public static LocalDateTime now() {
     return LocalDateTime.now(DEFAULT_ZONE_ID);
@@ -26,12 +23,6 @@ public class DateUtils {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
     LocalDateTime dateTime = LocalDateTime.now(DEFAULT_ZONE_ID);
     return dateTime.format(formatter);
-  }
-
-  public static LocalDateTime convertMMToUtc(LocalDateTime utcTime) {
-    return utcTime.atZone(ZoneId.of(ZONE_MYANMAR))
-        .withZoneSameInstant(DEFAULT_ZONE_ID)
-        .toLocalDateTime();
   }
 
   public static Date asDate(LocalDateTime localDateTime) {
