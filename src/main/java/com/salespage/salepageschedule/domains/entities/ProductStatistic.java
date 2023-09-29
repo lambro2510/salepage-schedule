@@ -50,11 +50,4 @@ public class ProductStatistic {
     totalShipperCod = response.getTotalShipCod();
   }
 
-  public void create(){
-    totalUser = 0L;
-    totalView = 0L;
-    totalBuy = 0L;
-    totalPurchase = 0L;
-    totalShipperCod = 0L;
-  }
 }
