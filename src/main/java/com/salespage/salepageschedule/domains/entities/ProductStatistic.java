@@ -19,8 +19,10 @@ public class ProductStatistic {
   private ObjectId id;
 
   @Field("daily")
+  @JsonFormat(pattern = "dd-MM-yyyy")
+  @DateTimeFormat(pattern = "dd-MM-yyyy")
   @Indexed(name = "daily_index", unique = true)
-  private String daily;
+  private LocalDate daily;
 
   @Field("product_id")
   private String productId;

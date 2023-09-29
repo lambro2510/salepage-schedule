@@ -41,7 +41,7 @@ public class StatisticSchedule {
   @Scheduled(cron = "* */1 * * * *") //1p 1 lần
   public void paymentStatisticPreDay() {
     log.info("paymentStatistic new-> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
-//    paymentStatisticService.asyncStatisticPreDay();
+    paymentStatisticService.asyncStatisticPreDay();
   }
 
   @Scheduled(cron = "0 0 * * * *") // Mỗi 1 giờ
