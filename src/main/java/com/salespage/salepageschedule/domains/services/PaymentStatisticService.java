@@ -2,6 +2,7 @@ package com.salespage.salepageschedule.domains.services;
 
 import com.salespage.salepageschedule.app.responses.Statistic.TotalPaymentStatisticResponse;
 import com.salespage.salepageschedule.domains.Constants;
+import com.salespage.salepageschedule.domains.entities.ProductDetail;
 import com.salespage.salepageschedule.domains.entities.ProductStatistic;
 import com.salespage.salepageschedule.domains.entities.Product;
 import com.salespage.salepageschedule.domains.entities.StatisticCheckpoint;
@@ -25,7 +26,7 @@ import static org.springframework.data.mongodb.core.aggregation.Aggregation.newA
 @Service
 public class PaymentStatisticService extends BaseService {
   public void asyncStatisticPreDay() {
-    List<Product> products = productStorage.findAll();
+    List<ProductDetail> products = productDetailStorage.findAll();
     StatisticCheckpoint statisticCheckpoint = statisticCheckpointStorage.findById(Constants.PAYMENT_STATISTIC_CHECKPOINT);
     if (Objects.isNull(statisticCheckpoint)) {
       statisticCheckpoint = new StatisticCheckpoint();
@@ -33,13 +34,12 @@ public class PaymentStatisticService extends BaseService {
       statisticCheckpoint.setId(Constants.PAYMENT_STATISTIC_CHECKPOINT);
     }
     for (LocalDate current = statisticCheckpoint.getCheckPoint(); current.isBefore(DateUtils.now().toLocalDate()); current = current.plusDays(1)) {
-      for (Product product : products) {
+      for (ProductDetail product : products) {
         ProductStatistic paymentStatistic = productStatisticStorage.findByDailyAndProductId(current, product.getId().toHexString());
         if (paymentStatistic == null) {
           paymentStatistic = new ProductStatistic();
           paymentStatistic.setDaily(current);
           paymentStatistic.setProductId(product.getId().toHexString());
-          paymentStatistic.setProductName(product.getProductName());
         }else{
           TotalPaymentStatisticResponse totalPaymentStatisticResponse = lookupAggregation(product.getId().toHexString(), current, current.plusDays(1));
           paymentStatistic.partnerFromStatistic(totalPaymentStatisticResponse);
@@ -56,15 +56,14 @@ public class PaymentStatisticService extends BaseService {
   public void asyncStatisticToday() {
     LocalDate startDay = DateUtils.startOfDay().toLocalDate();
     LocalDate endDay = startDay.plusDays(1);
-    List<Product> products = productStorage.findAll();
+    List<ProductDetail> products = productDetailStorage.findAll();
 
-    for (Product product : products) {
+    for (ProductDetail product : products) {
       ProductStatistic paymentStatistic = productStatisticStorage.findByDailyAndProductId(startDay, product.getId().toHexString());
       if (paymentStatistic == null) {
         paymentStatistic = new ProductStatistic();
         paymentStatistic.setDaily(startDay);
         paymentStatistic.setProductId(product.getId().toHexString());
-        paymentStatistic.setProductName(product.getProductName());
       }else{
         TotalPaymentStatisticResponse totalPaymentStatisticResponse = lookupAggregation(product.getId().toHexString(), startDay, endDay);
         paymentStatistic.partnerFromStatistic(totalPaymentStatisticResponse);

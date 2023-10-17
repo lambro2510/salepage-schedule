@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.persistence.Id;
+import java.util.Date;
 
 @Document("payment_transaction")
 @Data
@@ -36,6 +37,7 @@ public class PaymentTransaction extends BaseEntity {
 
   @Field("payment_status")
   private PaymentStatus paymentStatus;
+
 
   public boolean createdOneDayPeriod() {
     return createdAt < (System.currentTimeMillis() - 24 * 60 * 60 * 1000);

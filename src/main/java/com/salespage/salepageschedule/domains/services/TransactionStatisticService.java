@@ -2,6 +2,7 @@ package com.salespage.salepageschedule.domains.services;
 
 import com.salespage.salepageschedule.app.responses.transactionResponse.TotalStatisticResponse;
 import com.salespage.salepageschedule.domains.entities.ProductTransaction;
+import com.salespage.salepageschedule.domains.entities.ProductTransactionDetail;
 import com.salespage.salepageschedule.domains.entities.TransactionStatistic;
 import com.salespage.salepageschedule.domains.entities.types.StatisticType;
 import com.salespage.salepageschedule.domains.utils.Helper;
@@ -60,19 +61,21 @@ public class TransactionStatisticService extends BaseService {
   }
 
   public void statisticUpdate(String date, Long startAt, Long endAt, StatisticType statisticType) {
-    List<ProductTransaction> listProductTransactions = productTransactionStorage.findByCreatedAtBetween(startAt, endAt);
-    for (ProductTransaction transaction : listProductTransactions) {
-      TransactionStatistic transactionStatistic = transactionStatisticStorage.findByDateAndProductIdAndStatisticType(date, transaction.getProductId(), statisticType);
+    List<ProductTransactionDetail> listProductTransactions = productTransactionDetailStorage.findByCreatedAtBetween(startAt, endAt);
+    for (ProductTransactionDetail transaction : listProductTransactions) {
+      String productId = transaction.getProductDetail().getProductId();
+      ProductTransaction productTransaction = productTransactionStorage.findProductTransactionByIdInCache(productId);
+      TransactionStatistic transactionStatistic = transactionStatisticStorage.findByDateAndProductIdAndStatisticType(date, productId, statisticType);
       if (Objects.isNull(transactionStatistic)) transactionStatistic = new TransactionStatistic();
 
-      TotalStatisticResponse total = productTransactionStorage.countByProductId(transaction.getProductId(), startAt, endAt);
+      TotalStatisticResponse total = productTransactionDetailStorage.countByProductId(transaction.getProductDetail().getProductId(), startAt, endAt);
       transactionStatistic.setStatisticType(statisticType);
       transactionStatistic.setDate(date);
-      transactionStatistic.setUsername(transaction.getSellerUsername());
-      transactionStatistic.setProductId(transaction.getProductId());
+      transactionStatistic.setUsername(transaction.getStore().getOwnerStoreName());
+      transactionStatistic.setProductId(productId);
       transactionStatistic.setTotalPrice(total.getTotalPrice());
       transactionStatistic.setTotalProduct(total.getQuantity());
-      transactionStatistic.setTotalUser(productTransactionStorage.countUserBuy(transaction.getBuyerUsername(), transaction.getProductId()));
+      transactionStatistic.setTotalUser(productTransactionStorage.countUserBuy(productTransaction.getBuyerUsername(), productId));
       transactionStatisticStorage.save(transactionStatistic);
     }
   }

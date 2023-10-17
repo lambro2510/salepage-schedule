@@ -1,7 +1,6 @@
 package com.salespage.salepageschedule.domains.repositories;
 
 import com.salespage.salepageschedule.domains.entities.ProductTransaction;
-import com.salespage.salepageschedule.domains.entities.types.ProductTransactionState;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,14 +16,13 @@ public interface ProductTransactionRepository extends MongoRepository<ProductTra
 
   Page<ProductTransaction> findAll(Query query, Pageable pageable);
 
-  List<ProductTransaction> findAllProductTransactionByProductId(ObjectId productId);
 
-  @org.springframework.data.mongodb.repository.Query(value = "")
-  long countByProductId(ObjectId productId);
 
   List<ProductTransaction> findByCreatedAtBetween(Long startTimeOfDay, Long endTimeOfDay);
 
-  Integer countByBuyerUsernameAndProductId(String username, String productId);
 
-  List<ProductTransaction> findProductTransactionByState(ProductTransactionState productTransactionState);
+
+  List<ProductTransaction> findByIdIn(List<ObjectId> ids);
+
+  Integer countByBuyerUsernameAndId(String username, ObjectId objectId);
 }

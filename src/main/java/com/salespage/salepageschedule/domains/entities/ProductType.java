@@ -3,6 +3,7 @@ package com.salespage.salepageschedule.domains.entities;
 import com.salespage.salepageschedule.domains.entities.status.ProductTypeStatus;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -15,7 +16,9 @@ import javax.persistence.Id;
 public class ProductType extends BaseEntity {
 
   @Id
-  @Indexed(name = "product_type_idx", unique = true)
+  private ObjectId id;
+
+  @Indexed(name = "product_type_idx")
   @Field(name = "product_type")
   private String productType;
 
@@ -31,7 +34,8 @@ public class ProductType extends BaseEntity {
   @Field(name = "created_by")
   private String createdBy;
 
-  @Field(name = "udpated_by")
+  @Field(name = "updated_by")
   private String updatedBy;
+
 
 }

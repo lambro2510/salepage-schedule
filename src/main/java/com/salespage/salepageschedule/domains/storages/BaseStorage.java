@@ -9,6 +9,9 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 public class BaseStorage {
 
   @Autowired
+  protected AccountRepository accountRepository;
+
+  @Autowired
   protected UserRepository userRepository;
 
   @Autowired
@@ -82,6 +85,27 @@ public class BaseStorage {
 
   @Autowired
   protected ProductStatisticRepository productStatisticRepository;
+
+  @Autowired
+  protected OtpRepository otpRepository;
+
+  @Autowired
+  protected SearchHistoryRepository searchHistoryRepository;
+
+  @Autowired
+  protected CartRepository cartRepository;
+
+  @Autowired
+  protected ProductDetailRepository productDetailRepository;
+
+  @Autowired
+  protected ProductComboDetailRepository productComboDetailRepository;
+
+  @Autowired
+  protected ProductComboRepository productComboRepository;
+
+  @Autowired
+  protected ProductTransactionDetailRepository productTransactionDetailRepository;
 
   @Autowired
   protected MongoTemplate mongoTemplate;
