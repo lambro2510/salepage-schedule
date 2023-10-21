@@ -99,9 +99,9 @@ public class PaymentStatisticService extends BaseService {
     }
     productStorage.saveAll(products);
     List<Product> hotProduct = new ArrayList<>();
-    List<ProductStatistic> productStatistics = productStatisticStorage.findTop100ByOrderByTotalViewDesc();
-    List<ProductDetail> newHotProductDetails =  productDetailStorage.findByIdIn(productStatistics.stream().map(ProductStatistic::getProductId).collect(Collectors.toList()));
-    for(ProductDetail productDetail : newHotProductDetails){
+    List<ProductStatistic> productStatistics = productStatisticStorage.findTop100ByOrderByTotalView();
+    for(ProductStatistic productStatistic : productStatistics){
+      ProductDetail productDetail = productDetailStorage.findById(productStatistic.getProductId());
       Product product = productStorage.findProductById(productDetail.getProductId());
       product.setIsHot(true);
       product.setUpdatedAt(DateUtils.nowInMillis());
