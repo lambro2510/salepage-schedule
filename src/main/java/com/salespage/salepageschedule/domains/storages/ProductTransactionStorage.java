@@ -35,12 +35,8 @@ public class ProductTransactionStorage extends BaseStorage {
     return productTransactionRepository.findAll(query, pageable);
   }
 
-  public List<ProductTransaction> findAllProductTransactionByProductId(String productId) {
-    return productTransactionRepository.findAllProductTransactionByProductId(new ObjectId(productId));
-  }
-
   public TotalStatisticResponse countByProductId(String id, Long startAt, Long endAt) {
-    Criteria criteria = Criteria.where("product_id").is(id)
+    Criteria criteria = Criteria.where("product_detail_id").is(id)
         .andOperator(Criteria.where("created_at").gte(startAt), Criteria.where("created_at").lte(endAt));
     AggregationOperation match = Aggregation.match(criteria);
     GroupOperation groupOperation = Aggregation.group()
@@ -56,14 +52,12 @@ public class ProductTransactionStorage extends BaseStorage {
   }
 
   public Integer countUserBuy(String username, String productId) {
-    return productTransactionRepository.countByBuyerUsernameAndProductId(username, productId);
+    return productTransactionRepository.countByBuyerUsernameAndId(username, new ObjectId(productId));
   }
 
   public List<ProductTransaction> findByCreatedAtBetween(Long startTimeOfDay, Long endTimeOfDay) {
     return productTransactionRepository.findByCreatedAtBetween(startTimeOfDay, endTimeOfDay);
   }
 
-  public List<ProductTransaction> findProductTransactionByState(ProductTransactionState productTransactionState) {
-    return productTransactionRepository.findProductTransactionByState(productTransactionState);
-  }
+
 }

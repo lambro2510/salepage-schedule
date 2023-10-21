@@ -3,6 +3,7 @@ package com.salespage.salepageschedule.domains.entities;
 import com.salespage.salepageschedule.domains.entities.status.VoucherStoreStatus;
 import com.salespage.salepageschedule.domains.entities.types.DiscountType;
 import com.salespage.salepageschedule.domains.entities.types.VoucherStoreType;
+import com.salespage.salepageschedule.domains.exceptions.BadRequestException;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.bson.types.ObjectId;
@@ -30,7 +31,7 @@ public class VoucherStore extends BaseEntity {
   private DiscountType discountType;
 
   @Field("value")
-  private Long value;
+  private Double value;
 
   @Field("voucher_store_detail")
   private VoucherStoreDetail voucherStoreDetail;
@@ -40,6 +41,7 @@ public class VoucherStore extends BaseEntity {
 
   @Field("created_by")
   private String createdBy;
+
 
   @Data
   public static class VoucherStoreDetail {

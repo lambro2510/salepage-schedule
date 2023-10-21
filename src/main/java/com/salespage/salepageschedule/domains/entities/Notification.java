@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.persistence.Id;
+import java.util.Date;
 
 @Data
 @Document("notification")
@@ -32,5 +33,6 @@ public class Notification extends BaseEntity {
 
   @Field("ref_id")
   private String refId;
+
 
 }

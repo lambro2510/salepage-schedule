@@ -1,6 +1,7 @@
 package com.salespage.salepageschedule.domains.entities;
 
 import com.salespage.salepageschedule.domains.entities.status.VoucherCodeStatus;
+import com.salespage.salepageschedule.domains.utils.DateUtils;
 import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -10,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Objects;
 
 @Document("voucher_code")
 @Data
@@ -23,7 +25,7 @@ public class VoucherCode extends BaseEntity {
   private String voucherStoreId;
 
   @Field("owner_id")
-  private String ownerId;
+  private String username;
 
   @Field("used_at")
   private Date userAt;
@@ -38,4 +40,8 @@ public class VoucherCode extends BaseEntity {
   private VoucherCodeStatus voucherCodeStatus = VoucherCodeStatus.NEW;
 
 
+
+  public boolean checkVoucher(String username){
+    return expireTime.isAfter(DateUtils.now().toLocalDate()) && voucherCodeStatus.equals(VoucherCodeStatus.OWNER) && Objects.equals(username, this.getUsername());
+  }
 }

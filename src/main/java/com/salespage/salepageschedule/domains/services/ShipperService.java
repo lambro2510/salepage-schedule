@@ -1,6 +1,7 @@
 package com.salespage.salepageschedule.domains.services;
 
 import com.salespage.salepageschedule.domains.entities.ProductTransaction;
+import com.salespage.salepageschedule.domains.entities.ProductTransactionDetail;
 import com.salespage.salepageschedule.domains.entities.Shipper;
 import com.salespage.salepageschedule.domains.entities.types.ProductTransactionState;
 import com.salespage.salepageschedule.domains.entities.types.VehicleType;
@@ -18,9 +19,9 @@ public class ShipperService extends BaseService{
   @Transactional(isolation = Isolation.SERIALIZABLE, propagation = Propagation.REQUIRED)
   public void findShipperForProduct() {
     List<Shipper> freeShippers = shipperStorage.findByShipModeAndAcceptTransaction(true, false);
-    List<ProductTransaction> productTransactions = productTransactionStorage.findProductTransactionByState(ProductTransactionState.ACCEPT_STORE);
+    List<ProductTransactionDetail> productTransactions = productTransactionDetailStorage.findProductTransactionByState(ProductTransactionState.ACCEPT_STORE);
     for(Shipper shipper : freeShippers){
-      for(ProductTransaction productTransaction: productTransactions){
+      for(ProductTransactionDetail productTransaction: productTransactions){
         String shipperLocation = shipper.getLatitude() + ',' + shipper.getLongitude();
         DistanceMatrixResult.Distance distance = getDistance(shipperLocation, productTransaction.getStore().getLocation(), shipper.getVehicleType().getValue());
         if(VehicleType.CAR == shipper.getVehicleType()){
@@ -32,7 +33,7 @@ public class ShipperService extends BaseService{
       }
     }
     shipperStorage.saveAll(freeShippers);
-    productTransactionStorage.saveAll(productTransactions);
+    productTransactionDetailStorage.saveAll(productTransactions);
   }
 
 }

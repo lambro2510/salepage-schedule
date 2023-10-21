@@ -8,7 +8,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -20,7 +19,6 @@ public class ProductStatistic {
 
   @Field("daily")
   @JsonFormat(pattern = "dd-MM-yyyy")
-  @DateTimeFormat(pattern = "dd-MM-yyyy")
   @Indexed(name = "daily_index", unique = true)
   private LocalDate daily;
 
@@ -30,11 +28,11 @@ public class ProductStatistic {
   @Field("total_user")
   private Long totalUser = 0L;
 
-  @Field("total_view")
-  private Long totalView = 0L;
-
   @Field("total_buy")
   private Long totalBuy = 0L;
+
+  @Field("total_view")
+  private Long totalView = 0L;
 
   @Field("total_purchase")
   private Long totalPurchase = 0L;
@@ -42,11 +40,14 @@ public class ProductStatistic {
   @Field("total_shipper_cod")
   private Long totalShipperCod = 0L;
 
-  public void partnerFromStatistic(TotalPaymentStatisticResponse response){
-    totalUser = response.getTotalUser();
-    totalBuy = response.getTotalBuy();
-    totalPurchase = response.getTotalPurchase();
-    totalShipperCod = response.getTotalShipCod();
+  public void addView(){
+    totalView = totalView == null ? 1 : totalView + 1;
   }
 
+  public void partnerFromStatistic(TotalPaymentStatisticResponse statisticResponse) {
+    totalUser = statisticResponse.getTotalUser();
+    totalBuy = statisticResponse.getTotalBuy();
+    totalPurchase = statisticResponse.getTotalPurchase();
+    totalShipperCod = statisticResponse.getTotalShipCod();
+  }
 }

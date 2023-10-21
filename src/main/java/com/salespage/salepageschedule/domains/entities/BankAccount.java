@@ -1,5 +1,6 @@
 package com.salespage.salepageschedule.domains.entities;
 
+import com.salespage.salepageschedule.app.responses.BankResponse.BankAccountResponse;
 import com.salespage.salepageschedule.domains.entities.status.BankStatus;
 import lombok.Data;
 import org.bson.types.ObjectId;
@@ -46,4 +47,13 @@ public class BankAccount extends BaseEntity {
   @Field("money_out")
   private Double moneyOut = 0D;
 
+  public String getIdStr() {
+    return id.toHexString();
+  }
+
+  public BankAccountResponse assignToBankAccountResponse() {
+    BankAccountResponse bankAccountResponse = new BankAccountResponse();
+    bankAccountResponse.assignFromBankAccount(this);
+    return bankAccountResponse;
+  }
 }

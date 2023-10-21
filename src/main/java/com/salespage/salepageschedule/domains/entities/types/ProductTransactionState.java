@@ -1,6 +1,7 @@
 package com.salespage.salepageschedule.domains.entities.types;
 
 public enum ProductTransactionState {
+  IN_CART,
 
   WAITING_STORE,
 

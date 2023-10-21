@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.Calendar;
 import java.util.Date;
 
 @Document("user")
@@ -57,16 +58,16 @@ public class User {
     private CurrencyType type = CurrencyType.VND;
 
     @Field("money")
-    private long money;
+    private Double money = 0D;
 
-    public void addMoney(long amount) {
+    public void addMoney(double amount) {
       this.money = this.money + amount;
     }
 
-    public void minusMoney(long amount) {
+    public void minusMoney(double amount) {
       money = money - amount;
       if (money < 0)
-        money = 0;
+        money = 0D;
     }
 
   }

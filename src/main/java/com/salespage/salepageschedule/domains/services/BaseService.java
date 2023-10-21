@@ -1,5 +1,6 @@
 package com.salespage.salepageschedule.domains.services;
 
+import com.salespage.salepageschedule.domains.entities.ProductDetail;
 import com.salespage.salepageschedule.domains.entities.types.LogType;
 import com.salespage.salepageschedule.domains.entities.types.UserRole;
 import com.salespage.salepageschedule.domains.exceptions.BadRequestException;
@@ -104,6 +105,12 @@ public class BaseService {
 
   @Autowired
   protected RatingStorage ratingStorage;
+
+  @Autowired
+  protected ProductDetailStorage productDetailStorage;
+
+  @Autowired
+  protected ProductTransactionDetailStorage productTransactionDetailStorage;
 
   @Autowired
   @Lazy
