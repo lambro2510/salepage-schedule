@@ -7,6 +7,7 @@ import com.salespage.salepageschedule.domains.entities.ProductStatistic;
 import com.salespage.salepageschedule.domains.entities.Product;
 import com.salespage.salepageschedule.domains.entities.StatisticCheckpoint;
 import com.salespage.salepageschedule.domains.utils.DateUtils;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationOperation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
@@ -97,17 +98,17 @@ public class PaymentStatisticService extends BaseService {
     for(Product product : products){
       product.setIsHot(false);
     }
-    productStorage.saveAll(products);
-    List<Product> hotProduct = new ArrayList<>();
+    Map<ObjectId, Product> productMap = products.stream().collect(Collectors.toMap(Product::getId, Function.identity()));
     List<ProductStatistic> productStatistics = productStatisticStorage.findTop100ByOrderByTotalView();
     for(ProductStatistic productStatistic : productStatistics){
       ProductDetail productDetail = productDetailStorage.findById(productStatistic.getProductId());
-      Product product = productStorage.findProductById(productDetail.getProductId());
+      if(productDetail == null) continue;
+      Product product = productMap.get(new ObjectId(productDetail.getProductId()));
+      if(product == null) continue;
       product.setIsHot(true);
       product.setUpdatedAt(DateUtils.nowInMillis());
-      hotProduct.add(product);
     }
-    productStorage.saveAll(hotProduct);
+    productStorage.saveAll(products);
   }
 
 }
