@@ -44,12 +44,6 @@ public class StatisticSchedule {
     paymentStatisticService.asyncStatisticPreDay();
   }
 
-  @Scheduled(cron = "0 0 * * * *") // Mỗi 1 giờ
-  public void updateToNormalProduct() {
-    log.info("updateToNormalProduct new-> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
-    paymentStatisticService.updateToNormalProduct();
-  }
-
   @Scheduled(cron = "0 */15 * * * *") // Mỗi 15 phút
   public void updateToHotProduct() {
     log.info("updateToHotProduct new-> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));

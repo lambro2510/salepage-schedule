@@ -97,6 +97,9 @@ public class BaseService {
   protected ConfigStorage configStorage;
 
   @Autowired
+  protected ProductDetailStorage productDetailStorage;
+
+  @Autowired
   protected ShipperStorage shipperStorage;
 
   @Autowired

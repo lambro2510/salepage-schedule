@@ -29,8 +29,8 @@ public class ProductStatisticStorage extends BaseStorage {
 
   }
 
-  public List<ProductStatistic> findTop10ByOrderByTotalViewDesc() {
-    return productStatisticRepository.findTop10ByOrderByTotalViewDesc();
+  public List<ProductStatistic> findTop100ByOrderByTotalViewDesc() {
+    return productStatisticRepository.findTop100ByOrderByTotalViewDesc();
   }
 
 }

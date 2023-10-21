@@ -84,6 +84,9 @@ public class BaseStorage {
   protected ProductStatisticRepository productStatisticRepository;
 
   @Autowired
+  protected ProductDetailRepository productDetailRepository;
+
+  @Autowired
   protected MongoTemplate mongoTemplate;
 
   @Autowired
