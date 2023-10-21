@@ -39,6 +39,12 @@ public class BaseStorage {
   protected ProductTypeDetailRepository productTypeDetailRepository;
 
   @Autowired
+  protected ProductComboDetailRepository productComboDetailRepository;
+
+  @Autowired
+  protected ProductComboRepository productComboRepository;
+
+  @Autowired
   protected UserFavoriteRepository userFavoriteRepository;
 
   @Autowired
@@ -82,6 +88,9 @@ public class BaseStorage {
 
   @Autowired
   protected ProductStatisticRepository productStatisticRepository;
+
+  @Autowired
+  protected ProductTransactionDetailRepository productTransactionDetailRepository;
 
   @Autowired
   protected ProductDetailRepository productDetailRepository;

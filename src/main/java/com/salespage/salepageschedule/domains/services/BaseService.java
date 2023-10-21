@@ -107,9 +107,6 @@ public class BaseService {
   protected RatingStorage ratingStorage;
 
   @Autowired
-  protected ProductDetailStorage productDetailStorage;
-
-  @Autowired
   protected ProductTransactionDetailStorage productTransactionDetailStorage;
 
   @Autowired
