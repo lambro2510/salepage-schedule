@@ -13,9 +13,9 @@ public interface ProductStatisticRepository extends MongoRepository<ProductStati
 
   List<ProductStatistic> findByDailyBetween(LocalDate startDate, LocalDate endDate);
 
-  ProductStatistic findByDailyAndProductId(LocalDate daily, String productId);
+  ProductStatistic findByDailyAndProductDetailId(LocalDate daily, String productId);
 
-  List<ProductStatistic> findByProductIdAndDailyBetween(String productId, LocalDate startDate, LocalDate endDate);
+  List<ProductStatistic> findByProductDetailIdAndDailyBetween(String productId, LocalDate startDate, LocalDate endDate);
 
   List<ProductStatistic> findTop100ByOrderByTotalViewDesc();
 

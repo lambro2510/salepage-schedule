@@ -14,7 +14,7 @@ public class ProductDetailStorage extends BaseStorage{
   }
 
   public ProductDetail findById(String detailId) {
-    return productDetailRepository.findById(new ObjectId(detailId)).get();
+    return productDetailRepository.findProductDetailById(new ObjectId(detailId));
   }
 
   public void save(ProductDetail productDetail) {

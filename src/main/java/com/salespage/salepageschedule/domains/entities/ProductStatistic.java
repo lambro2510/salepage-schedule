@@ -22,6 +22,9 @@ public class ProductStatistic {
   @Indexed(name = "daily_index", unique = true)
   private LocalDate daily;
 
+  @Field("product_detail_id")
+  private String productDetailId;
+
   @Field("product_id")
   private String productId;
 

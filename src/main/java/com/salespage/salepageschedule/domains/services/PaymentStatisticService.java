@@ -37,11 +37,12 @@ public class PaymentStatisticService extends BaseService {
     }
     for (LocalDate current = statisticCheckpoint.getCheckPoint(); current.isBefore(DateUtils.now().toLocalDate()); current = current.plusDays(1)) {
       for (ProductDetail productDetail : productDetails) {
-        ProductStatistic paymentStatistic = productStatisticStorage.findByDailyAndProductId(current, productDetail.getId().toHexString());
+        ProductStatistic paymentStatistic = productStatisticStorage.findByDailyAndProductDetailId(current, productDetail.getId().toHexString());
         if (paymentStatistic == null) {
           paymentStatistic = new ProductStatistic();
           paymentStatistic.setDaily(current);
-          paymentStatistic.setProductId(productDetail.getId().toHexString());
+          paymentStatistic.setProductDetailId(productDetail.getId().toHexString());
+          paymentStatistic.setProductId(productDetail.getProductId());
         }else{
           TotalPaymentStatisticResponse totalPaymentStatisticResponse = lookupAggregation(productDetail.getId().toHexString(), current, current.plusDays(1));
           paymentStatistic.partnerFromStatistic(totalPaymentStatisticResponse);
@@ -60,11 +61,12 @@ public class PaymentStatisticService extends BaseService {
     List<ProductDetail> productDetails = productDetailStorage.findAll();
 
     for (ProductDetail productDetail : productDetails) {
-      ProductStatistic paymentStatistic = productStatisticStorage.findByDailyAndProductId(startDay, productDetail.getId().toHexString());
+      ProductStatistic paymentStatistic = productStatisticStorage.findByDailyAndProductDetailId(startDay, productDetail.getId().toHexString());
       if (paymentStatistic == null) {
         paymentStatistic = new ProductStatistic();
         paymentStatistic.setDaily(startDay);
-        paymentStatistic.setProductId(productDetail.getId().toHexString());
+        paymentStatistic.setProductDetailId(productDetail.getId().toHexString());
+        paymentStatistic.setProductId(productDetail.getProductId());
       }else{
         TotalPaymentStatisticResponse totalPaymentStatisticResponse = lookupAggregation(productDetail.getId().toHexString(), startDay, endDay);
         paymentStatistic.partnerFromStatistic(totalPaymentStatisticResponse);
@@ -101,10 +103,10 @@ public class PaymentStatisticService extends BaseService {
     Map<ObjectId, Product> productMap = products.stream().collect(Collectors.toMap(Product::getId, Function.identity()));
     List<ProductStatistic> productStatistics = productStatisticStorage.findTop100ByOrderByTotalView();
     for(ProductStatistic productStatistic : productStatistics){
-      ProductDetail productDetail = productDetailStorage.findById(productStatistic.getProductId());
-      if(productDetail == null) continue;
-      Product product = productMap.get(new ObjectId(productDetail.getProductId()));
-      if(product == null) continue;
+      Product product = productMap.get(new ObjectId(productStatistic.getProductId()));
+      if(product == null) {
+        continue;
+      };
       product.setIsHot(true);
       product.setUpdatedAt(DateUtils.nowInMillis());
     }
