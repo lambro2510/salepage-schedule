@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDate;
 
-@Document("payment_statistic")
+@Document("product_statistic")
 @Data
 public class ProductStatistic {
   @Id
