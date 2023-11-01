@@ -104,13 +104,13 @@ public class PaymentStatisticService extends BaseService {
     List<ProductStatistic> productStatistics = productStatisticStorage.findTop100ByOrderByTotalView();
     for(ProductStatistic productStatistic : productStatistics){
       Product product = productMap.get(new ObjectId(productStatistic.getProductId()));
-      if(product == null) {
-        continue;
-      };
-      product.setIsHot(true);
-      product.setUpdatedAt(DateUtils.nowInMillis());
+      if(product != null) {
+        product.setIsHot(true);
+        product.setUpdatedAt(DateUtils.nowInMillis());
+        productMap.put(product.getId(), product);
+      }
     }
-    productStorage.saveAll(products);
+    productStorage.saveAll(new ArrayList<>(productMap.values()));
   }
 
 }
