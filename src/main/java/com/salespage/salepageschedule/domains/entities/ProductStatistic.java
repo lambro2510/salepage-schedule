@@ -48,9 +48,9 @@ public class ProductStatistic {
   }
 
   public void partnerFromStatistic(TotalPaymentStatisticResponse statisticResponse) {
-    totalUser = statisticResponse.getTotalUser();
-    totalBuy = statisticResponse.getTotalBuy();
-    totalPurchase = statisticResponse.getTotalPurchase();
-    totalShipperCod = statisticResponse.getTotalShipCod();
+    totalUser = statisticResponse.getTotalUser() != null ?  statisticResponse.getTotalUser() : 0;
+    totalBuy = statisticResponse.getTotalBuy()  != null ?  statisticResponse.getTotalBuy() : 0;;
+    totalPurchase = statisticResponse.getTotalPurchase()  != null ?  statisticResponse.getTotalPurchase() : 0;;
+    totalShipperCod = statisticResponse.getTotalShipCod()  != null ?  statisticResponse.getTotalShipCod() : 0;;
   }
 }
