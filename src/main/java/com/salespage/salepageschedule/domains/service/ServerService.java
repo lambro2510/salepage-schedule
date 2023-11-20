@@ -1,17 +1,18 @@
 package com.salespage.salepageschedule.domains.service;
 
-import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import com.salespage.salepageschedule.domains.config.AppConfig;
+import feign.RequestLine;
+import org.springframework.cloud.openfeign.FeignClient;
 
-@FeignClient(value = "serverClient", url = "${server.domain}")
+
+@FeignClient(value = "serverClient", url = "${feign.domain}", configuration = AppConfig.class)
 public interface ServerService {
-  @RequestMapping(method = RequestMethod.POST, value = "api/v1/it/today")
-  Boolean statisticToday();
+  @RequestLine("POST api/v1/it/statistic/today")
+  void statisticToday();
 
-  @RequestMapping(method = RequestMethod.POST, value = "api/v1/it/pre")
-  Boolean statisticPreDay();
+  @RequestLine("POST api/v1/it/statistic/pre")
+  void statisticPreDay();
 
-  @RequestMapping(method = RequestMethod.POST, value = "api/v1/it/hot")
-  Boolean updateHotProduct();
+  @RequestLine("POST api/v1/it/statistic/hot")
+  void updateHotProduct();
 }

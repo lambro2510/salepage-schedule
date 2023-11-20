@@ -6,18 +6,21 @@ spring:
     serialization:
       FAIL_ON_EMPTY_BEANS: false
   application:
-    name: salespage-service
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+    name: salespage-schedule
 debug: ${DEBUG:debug}
-logging:
-  config: classpath:log.xml
-  level:
-    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
 
 server:
   port: ${PORT:8080}
-  domain: ${SERVER_DOMAIN:https://salepage-server-rherm.appengine.bfcplatform.vn}
+
+
+feign:
+  domain: ${SERVER_DOMAIN:http:localhost:8080}
+  client:
+    config:
+      gamiRequestFactory:
+        connectTimeout: 5000
+        readTimeout: 5000
+      gameRequestFactory:
+        connectTimeout: 5000
+        readTimeout: 5000
 
