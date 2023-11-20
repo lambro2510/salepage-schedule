@@ -15,4 +15,13 @@ public interface ServerService {
 
   @RequestLine("POST api/v1/it/statistic/hot")
   void updateHotProduct();
+
+  @RequestLine("POST api/v1/it/bank/mb/today")
+  void updateMbToday();
+
+  @RequestLine("POST api/v1/it/bank/tp/today")
+  void updateTpToday();
+
+  @RequestLine("POST api/v1/it/bank/tp/pre")
+  void updateTpPre();
 }
