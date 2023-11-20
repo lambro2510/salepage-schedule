@@ -32,7 +32,7 @@ public class StatisticSchedule {
     checkInDailyStatisticService.statisticUserCheckIn();
   }
 
-  @Scheduled(cron = "*/30 * * * * *") //30 1 lần
+  @Scheduled(fixedDelay = 1000 * 30) //30s 1 lần
   public void paymentStatisticToday() {
     log.info("paymentStatistic new-> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
     paymentStatisticService.asyncStatisticToday();

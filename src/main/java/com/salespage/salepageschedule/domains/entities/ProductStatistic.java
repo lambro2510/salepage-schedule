@@ -28,6 +28,9 @@ public class ProductStatistic {
   @Field("product_id")
   private String productId;
 
+  @Field("product_detail_id")
+  private String productDetailId;
+
   @Field("total_user")
   private Long totalUser = 0L;
 
