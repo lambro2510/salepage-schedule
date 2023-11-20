@@ -8,29 +8,30 @@ import java.util.Date;
 public class DateUtils {
 
   private static final ZoneId DEFAULT_ZONE_ID = ZoneId.of("Asia/Ho_Chi_Minh");
+  private static final ZoneId UTC = ZoneId.of("UTC");
 
   public static LocalDateTime now() {
-    return LocalDateTime.now(DEFAULT_ZONE_ID);
+    return LocalDateTime.now(UTC);
   }
 
   public static String nowString() {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    LocalDateTime dateTime = LocalDateTime.now(DEFAULT_ZONE_ID);
+    LocalDateTime dateTime = LocalDateTime.now(UTC);
     return dateTime.format(formatter);
   }
 
   public static String nowString(String pattern) {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
-    LocalDateTime dateTime = LocalDateTime.now(DEFAULT_ZONE_ID);
+    LocalDateTime dateTime = LocalDateTime.now(UTC);
     return dateTime.format(formatter);
   }
 
   public static Date asDate(LocalDateTime localDateTime) {
-    return Date.from(localDateTime.atZone(DEFAULT_ZONE_ID).toInstant());
+    return Date.from(localDateTime.atZone(UTC).toInstant());
   }
 
   public static LocalDateTime startOfDay() {
-    return LocalDateTime.now(DEFAULT_ZONE_ID).with(LocalTime.MIN);
+    return LocalDateTime.now(UTC).with(LocalTime.MIN);
   }
 
   public static LocalDateTime startOfDay(LocalDateTime dateTime) {
@@ -40,7 +41,7 @@ public class DateUtils {
 
   public static String startOfDayString() {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    LocalDateTime dateTime = LocalDateTime.now(DEFAULT_ZONE_ID).with(LocalTime.MIN);
+    LocalDateTime dateTime = LocalDateTime.now(UTC).with(LocalTime.MIN);
     return dateTime.format(formatter);
   }
 
@@ -51,7 +52,7 @@ public class DateUtils {
   }
 
   public static LocalDateTime endOfDay() {
-    return LocalDateTime.now(DEFAULT_ZONE_ID).with(LocalTime.MAX);
+    return LocalDateTime.now(UTC).with(LocalTime.MAX);
   }
 
   public static LocalDateTime endOfDay(LocalDateTime dateTime) {
@@ -60,7 +61,7 @@ public class DateUtils {
 
   public static String endOfDayString() {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    LocalDateTime dateTime = LocalDateTime.now(DEFAULT_ZONE_ID).with(LocalTime.MAX);
+    LocalDateTime dateTime = LocalDateTime.now(UTC).with(LocalTime.MAX);
     return dateTime.format(formatter);
   }
 
@@ -105,11 +106,11 @@ public class DateUtils {
   }
 
   public static long toMills(final LocalDateTime localDateTime) {
-    return localDateTime.atZone(DEFAULT_ZONE_ID).toInstant().toEpochMilli();
+    return localDateTime.atZone(UTC).toInstant().toEpochMilli();
   }
 
   public static Date toDate(final LocalDateTime localDateTime) {
-    return Date.from(localDateTime.atZone(DEFAULT_ZONE_ID).toInstant());
+    return Date.from(localDateTime.atZone(UTC).toInstant());
   }
 
   public static String toString(final LocalDateTime localDateTime) {
@@ -133,7 +134,7 @@ public class DateUtils {
   }
 
   public static long nowInMillis() {
-    return LocalDateTime.now(DEFAULT_ZONE_ID).toInstant(ZoneOffset.UTC).toEpochMilli();
+    return LocalDateTime.now(UTC).toInstant(ZoneOffset.UTC).toEpochMilli();
   }
 
   public static LocalDateTime convertToLocalDateTime(String dateString, String pattern) {

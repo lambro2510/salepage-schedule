@@ -38,7 +38,7 @@ public class StatisticSchedule {
     paymentStatisticService.asyncStatisticToday();
   }
 
-  @Scheduled(cron = "* */1 * * * *") //1p 1 lần
+  @Scheduled(fixedDelay = 1000 * 60 * 60) //1h 1 lần
   public void paymentStatisticPreDay() {
     log.info("paymentStatistic new-> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
     paymentStatisticService.asyncStatisticPreDay();
