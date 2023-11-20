@@ -35,6 +35,7 @@ public class StatisticSchedule {
   @Scheduled(fixedDelay = 1000 * 30) //30s 1 lần
   public void paymentStatisticToday() {
     log.info("paymentStatistic new-> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
+
     paymentStatisticService.asyncStatisticToday();
   }
 
@@ -43,7 +44,7 @@ public class StatisticSchedule {
     log.info("paymentStatistic new-> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
     paymentStatisticService.asyncStatisticPreDay();
   }
-  @Scheduled(initialDelay = 5000 ,fixedDelay = 1000 * 5) //30s 1 lần
+  @Scheduled(initialDelay = 5000 ,fixedDelay = 1000 * 30) //30s 1 lần
 //  @Scheduled(cron = "0 */15 * * * *") // Mỗi 15 phút
   public void updateToHotProduct() {
     log.info("updateToHotProduct new-> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));

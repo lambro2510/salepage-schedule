@@ -20,4 +20,6 @@ public interface ProductStatisticRepository extends MongoRepository<ProductStati
   List<ProductStatistic> findTop100ByOrderByTotalViewDesc();
 
   List<ProductStatistic> findTop100ByOrderByTotalView();
+
+  List<ProductStatistic> findDistinctTop100ByOrderByTotalView();
 }

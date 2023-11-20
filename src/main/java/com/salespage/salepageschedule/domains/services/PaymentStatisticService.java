@@ -14,12 +14,12 @@ import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.aggregation.GroupOperation;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -55,6 +55,7 @@ public class PaymentStatisticService extends BaseService {
     }
   }
 
+  @Transactional(isolation = Isolation.SERIALIZABLE, propagation = Propagation.REQUIRED)
   public void asyncStatisticToday() {
     LocalDate startDay = DateUtils.startOfDay().toLocalDate();
     LocalDate endDay = startDay.plusDays(1);
@@ -95,20 +96,31 @@ public class PaymentStatisticService extends BaseService {
     return response;
   }
 
+  @Transactional(isolation = Isolation.SERIALIZABLE, propagation = Propagation.REQUIRED)
   public void updateToHotProduct(){
-    List<Product> products = productStorage.findAll();
-    for(Product product : products){
-      product.setIsHot(false);
-    }
-    Map<ObjectId, Product> productMap = products.stream().collect(Collectors.toMap(Product::getId, Function.identity()));
-    List<ProductStatistic> productStatistics = productStatisticStorage.findTop100ByOrderByTotalView();
+    LocalDate now = DateUtils.now().toLocalDate();
+    LocalDate preWeek = now.minusWeeks(1);
+    LocalDate nextDay = now.plusDays(1);
+    List<ProductStatistic> productStatistics = productStatisticStorage.findByDailyBetween(preWeek, nextDay);
+    Map<Long, ProductStatistic> topViewProduct = new HashMap<>();
     for(ProductStatistic productStatistic : productStatistics){
-      Product product = productMap.get(new ObjectId(productStatistic.getProductId()));
-      if(product != null) {
-        product.setIsHot(true);
-        product.setUpdatedAt(DateUtils.nowInMillis());
-        productMap.put(product.getId(), product);
+      topViewProduct.put(productStatistic.getTotalView(), productStatistic);
+    }
+    int count = 0;
+    List<ProductStatistic> statistics = new ArrayList<>(topViewProduct.values());
+    Map<String, Product> productMap = new HashMap<>();
+    for(ProductStatistic statistic: statistics){
+      if(count >= 10){
+        break;
       }
+      Product product = productMap.get(statistic.getProductId());
+      if(product != null){
+        continue;
+      }
+
+      product = productStorage.findProductById(statistic.getProductId());
+      productMap.put(product.getId().toHexString(), product);
+      count++;
     }
     productStorage.saveAll(new ArrayList<>(productMap.values()));
   }
