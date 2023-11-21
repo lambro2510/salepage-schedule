@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 @Log4j2
 public class PaymentSchedule {
   @Autowired
-  @Lazy
   private ServerService serverService;
 
   @Scheduled(fixedDelay = 1000 * 30)

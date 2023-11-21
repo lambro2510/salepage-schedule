@@ -14,7 +14,6 @@ import java.time.format.DateTimeFormatter;
 @Log4j2
 public class StatisticSchedule {
   @Autowired
-  @Lazy
   private ServerService serverService;
 
   @Scheduled(fixedDelay = 1000 * 30)
