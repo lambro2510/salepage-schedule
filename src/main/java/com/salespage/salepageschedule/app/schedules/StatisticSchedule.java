@@ -1,54 +1,32 @@
 package com.salespage.salepageschedule.app.schedules;
 
-import com.salespage.salepageschedule.domains.services.CheckInDailyStatisticService;
-import com.salespage.salepageschedule.domains.services.PaymentStatisticService;
-import com.salespage.salepageschedule.domains.services.TransactionStatisticService;
-import lombok.extern.log4j.Log4j2;
+import com.salespage.salepageschedule.domains.services.ServerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@Component
-@Log4j2
+@Service
 public class StatisticSchedule {
-
   @Autowired
-  private TransactionStatisticService transactionStatisticService;
+  @Lazy
+  private ServerService serverService;
 
-  @Autowired
-  private CheckInDailyStatisticService checkInDailyStatisticService;
-
-  @Autowired
-  private PaymentStatisticService paymentStatisticService;
-
-
-
-  @Scheduled(initialDelay = 70000 ,fixedDelay = 1000 * 60 * 60 * 4) //4h 1 lần
-  public void checkInStatistic() {
-    log.info("checkInStatistic -> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
-    checkInDailyStatisticService.statisticUserCheckIn();
+  @Scheduled(fixedDelay = 1000 * 30)
+  public void productStatisticToday() {
+    serverService.statisticToday();
   }
 
-  @Scheduled(fixedDelay = 1000 * 30) //30s 1 lần
-  public void paymentStatisticToday() {
-    log.info("paymentStatistic new-> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
-
-    paymentStatisticService.asyncStatisticToday();
+  @Scheduled(fixedDelay = 1000 * 60 * 60)
+  public void productStatisticPreDay() {
+    serverService.statisticPreDay();
   }
 
-  @Scheduled(fixedDelay = 1000 * 60 * 60) //1h 1 lần
-  public void paymentStatisticPreDay() {
-    log.info("paymentStatistic new-> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
-    paymentStatisticService.asyncStatisticPreDay();
-  }
-  @Scheduled(initialDelay = 5000 ,fixedDelay = 1000 * 30) //30s 1 lần
-//  @Scheduled(cron = "0 */15 * * * *") // Mỗi 15 phút
+  @Scheduled(initialDelay = 5000, fixedDelay = 1000 * 30)
   public void updateToHotProduct() {
-    log.info("updateToHotProduct new-> {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")));
-    paymentStatisticService.updateToHotProduct();
+    serverService.updateHotProduct();
   }
-
 }
