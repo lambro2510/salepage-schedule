@@ -1,38 +1,81 @@
-2023-11-21 19:07:15,935 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 6.2.5.Final
-2023-11-21 19:07:15,982 INFO o.s.b.StartupInfoLogger [main] Starting SalesPageScheduleApplication using Java 17.0.9 on DESKTOP-NSE63D9 with PID 4444 (D:\Salapage\salepage-schedule\target\classes started by Admin in D:\Salapage\salepage-schedule)
-2023-11-21 19:07:15,985 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-11-21 19:07:15,985 DEBUG o.s.b.SpringApplication [main] Loading source class com.salespage.salepageschedule.SalesPageScheduleApplication
-2023-11-21 19:07:16,020 DEBUG o.s.c.s.AbstractApplicationContext [main] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1bf0f6f6
-2023-11-21 19:07:16,641 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
-2023-11-21 19:07:16,643 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2023-11-21 19:07:16,655 DEBUG o.s.b.a.AutoConfigurationPackages$BasePackages [main] @EnableAutoConfiguration was declared on a class in the package 'com.salespage.salepageschedule'. Automatic @Repository and @Entity scanning is enabled.
-2023-11-21 19:07:16,659 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 9 ms. Found 0 MongoDB repository interfaces.
-2023-11-21 19:07:16,838 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=96d56593-0339-3f1a-b068-e4f34642e108
-2023-11-21 19:07:16,989 DEBUG o.s.c.e.PropertySourcesPropertyResolver [main] Found key 'PORT' in PropertySource 'systemEnvironment' with value of type String
-2023-11-21 19:07:17,010 INFO o.e.j.u.l.Log [main] Logging initialized @2375ms to org.eclipse.jetty.util.log.Slf4jLog
-2023-11-21 19:07:17,101 DEBUG o.s.b.w.s.s.DocumentRoot [main] Code archive: C:\Users\Admin\.m2\repository\org\springframework\boot\spring-boot\2.7.5\spring-boot-2.7.5.jar
-2023-11-21 19:07:17,101 DEBUG o.s.b.w.s.s.DocumentRoot [main] Code archive: C:\Users\Admin\.m2\repository\org\springframework\boot\spring-boot\2.7.5\spring-boot-2.7.5.jar
-2023-11-21 19:07:17,102 DEBUG o.s.b.w.s.s.DocumentRoot [main] None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
-2023-11-21 19:07:17,144 INFO o.s.b.w.e.j.JettyServletWebServerFactory [main] Server initialized with port: 8080
-2023-11-21 19:07:17,147 INFO o.e.j.s.Server [main] jetty-9.4.49.v20220914; built: 2022-09-14T01:07:36.601Z; git: 4231a3b2e4cb8548a412a789936d640a97b1aa0a; jvm 17.0.9+8-LTS
-2023-11-21 19:07:17,165 INFO o.e.j.s.h.ContextHandler$Context [main] Initializing Spring embedded WebApplicationContext
-2023-11-21 19:07:17,165 DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext [main] Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
-2023-11-21 19:07:17,166 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1146 ms
-2023-11-21 19:07:17,184 DEBUG o.s.b.w.s.ServletContextInitializerBeans [main] Mapping filters: springSecurityFilterChain urls=[/*] order=-100, filterRegistrationBean urls=[/*] order=2147483647, characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
-2023-11-21 19:07:17,184 DEBUG o.s.b.w.s.ServletContextInitializerBeans [main] Mapping servlets: dispatcherServlet urls=[/]
-2023-11-21 19:07:17,252 INFO o.e.j.s.s.DefaultSessionIdManager [main] DefaultSessionIdManager workerName=node0
-2023-11-21 19:07:17,253 INFO o.e.j.s.s.DefaultSessionIdManager [main] No SessionScavenger set, using defaults
-2023-11-21 19:07:17,253 INFO o.e.j.s.s.HouseKeeper [main] node0 Scavenging every 600000ms
-2023-11-21 19:07:17,261 INFO o.e.j.s.h.ContextHandler [main] Started o.s.b.w.e.j.JettyEmbeddedWebAppContext@7eb27768{application,/,[file:///C:/Users/Admin/AppData/Local/Temp/jetty-docbase.8080.1969489152792333747/, jar:file:/C:/Users/Admin/.m2/repository/org/webjars/swagger-ui/4.17.1/swagger-ui-4.17.1.jar!/META-INF/resources],AVAILABLE}
-2023-11-21 19:07:17,262 INFO o.e.j.s.Server [main] Started @2628ms
-2023-11-21 19:07:17,275 DEBUG o.s.c.e.PropertySourcesPropertyResolver [main] Found key 'SERVER_DOMAIN' in PropertySource 'systemEnvironment' with value of type String
-2023-11-21 19:07:17,529 DEBUG o.s.b.a.SpringApplicationAdminMXBeanRegistrar [main] Application Admin MBean registered with name 'org.springframework.boot:type=Admin,name=SpringApplication'
-2023-11-21 19:07:17,554 WARN o.s.c.s.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'paymentSchedule': Unsatisfied dependency expressed through field 'serverService'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'com.salespage.salepageschedule.domains.services.ServerService': Unexpected exception during bean creation; nested exception is java.lang.IllegalStateException: Method ServerService#updateMbToday() not annotated with HTTP method type (ex. GET, POST)
-Warnings:
-- 
-2023-11-21 19:07:17,557 INFO o.e.j.s.s.HouseKeeper [main] node0 Stopped scavenging
-2023-11-21 19:07:17,559 INFO o.e.j.s.h.ContextHandler [main] Stopped o.s.b.w.e.j.JettyEmbeddedWebAppContext@7eb27768{application,/,[file:///C:/Users/Admin/AppData/Local/Temp/jetty-docbase.8080.1969489152792333747/, jar:file:/C:/Users/Admin/.m2/repository/org/webjars/swagger-ui/4.17.1/swagger-ui-4.17.1.jar!/META-INF/resources],STOPPED}
-2023-11-21 19:07:17,573 DEBUG o.s.b.a.l.ConditionEvaluationReportLoggingListener [main] 
+2023-11-21 19:11:03,059 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 6.2.5.Final
+2023-11-21 19:11:03,105 INFO o.s.b.StartupInfoLogger [main] Starting SalesPageScheduleApplication using Java 17.0.9 on DESKTOP-NSE63D9 with PID 20808 (D:\Salapage\salepage-schedule\target\classes started by Admin in D:\Salapage\salepage-schedule)
+2023-11-21 19:11:03,107 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-11-21 19:11:03,108 DEBUG o.s.b.SpringApplication [main] Loading source class com.salespage.salepageschedule.SalesPageScheduleApplication
+2023-11-21 19:11:03,142 DEBUG o.s.c.s.AbstractApplicationContext [main] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7f4d9395
+2023-11-21 19:11:03,741 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2023-11-21 19:11:03,742 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2023-11-21 19:11:03,749 DEBUG o.s.b.a.AutoConfigurationPackages$BasePackages [main] @EnableAutoConfiguration was declared on a class in the package 'com.salespage.salepageschedule'. Automatic @Repository and @Entity scanning is enabled.
+2023-11-21 19:11:03,751 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 5 ms. Found 0 MongoDB repository interfaces.
+2023-11-21 19:11:03,941 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=4a3cadcc-e64d-38e7-87b7-438639a2126e
+2023-11-21 19:11:04,132 DEBUG o.s.c.e.PropertySourcesPropertyResolver [main] Found key 'PORT' in PropertySource 'systemEnvironment' with value of type String
+2023-11-21 19:11:04,158 INFO o.e.j.u.l.Log [main] Logging initialized @2353ms to org.eclipse.jetty.util.log.Slf4jLog
+2023-11-21 19:11:04,248 DEBUG o.s.b.w.s.s.DocumentRoot [main] Code archive: C:\Users\Admin\.m2\repository\org\springframework\boot\spring-boot\2.7.5\spring-boot-2.7.5.jar
+2023-11-21 19:11:04,248 DEBUG o.s.b.w.s.s.DocumentRoot [main] Code archive: C:\Users\Admin\.m2\repository\org\springframework\boot\spring-boot\2.7.5\spring-boot-2.7.5.jar
+2023-11-21 19:11:04,249 DEBUG o.s.b.w.s.s.DocumentRoot [main] None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2023-11-21 19:11:04,294 INFO o.s.b.w.e.j.JettyServletWebServerFactory [main] Server initialized with port: 8080
+2023-11-21 19:11:04,296 INFO o.e.j.s.Server [main] jetty-9.4.49.v20220914; built: 2022-09-14T01:07:36.601Z; git: 4231a3b2e4cb8548a412a789936d640a97b1aa0a; jvm 17.0.9+8-LTS
+2023-11-21 19:11:04,319 INFO o.e.j.s.h.ContextHandler$Context [main] Initializing Spring embedded WebApplicationContext
+2023-11-21 19:11:04,319 DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext [main] Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2023-11-21 19:11:04,319 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1177 ms
+2023-11-21 19:11:04,342 DEBUG o.s.b.w.s.ServletContextInitializerBeans [main] Mapping filters: springSecurityFilterChain urls=[/*] order=-100, filterRegistrationBean urls=[/*] order=2147483647, characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2023-11-21 19:11:04,342 DEBUG o.s.b.w.s.ServletContextInitializerBeans [main] Mapping servlets: dispatcherServlet urls=[/]
+2023-11-21 19:11:04,451 INFO o.e.j.s.s.DefaultSessionIdManager [main] DefaultSessionIdManager workerName=node0
+2023-11-21 19:11:04,451 INFO o.e.j.s.s.DefaultSessionIdManager [main] No SessionScavenger set, using defaults
+2023-11-21 19:11:04,453 INFO o.e.j.s.s.HouseKeeper [main] node0 Scavenging every 660000ms
+2023-11-21 19:11:04,480 INFO o.e.j.s.h.ContextHandler [main] Started o.s.b.w.e.j.JettyEmbeddedWebAppContext@d25e878{application,/,[file:///C:/Users/Admin/AppData/Local/Temp/jetty-docbase.8080.10284258924550362058/, jar:file:/C:/Users/Admin/.m2/repository/org/webjars/swagger-ui/4.17.1/swagger-ui-4.17.1.jar!/META-INF/resources],AVAILABLE}
+2023-11-21 19:11:04,481 INFO o.e.j.s.Server [main] Started @2678ms
+2023-11-21 19:11:04,507 DEBUG o.s.c.e.PropertySourcesPropertyResolver [main] Found key 'SERVER_DOMAIN' in PropertySource 'systemEnvironment' with value of type String
+2023-11-21 19:11:04,742 DEBUG o.s.b.a.SpringApplicationAdminMXBeanRegistrar [main] Application Admin MBean registered with name 'org.springframework.boot:type=Admin,name=SpringApplication'
+2023-11-21 19:11:05,214 DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter [main] ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-11-21 19:11:05,277 DEBUG o.s.w.s.h.AbstractHandlerMethodMapping [main] 6 mappings in 'requestMappingHandlerMapping'
+2023-11-21 19:11:05,791 DEBUG o.s.w.s.h.SimpleUrlHandlerMapping [main] Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2023-11-21 19:11:05,799 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [main] ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-11-21 19:11:05,905 DEBUG o.s.c.e.PropertySourcesPropertyResolver [main] Found key 'MONGODB_URI' in PropertySource 'systemEnvironment' with value of type String
+2023-11-21 19:11:06,058 INFO c.m.d.l.SLF4JLogger [main] MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.6.1"}, "os": {"type": "Windows", "name": "Windows 10", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Amazon.com Inc./17.0.9+8-LTS"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='lam', source='admin', password=<hidden>, mechanismProperties=<hidden>}, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.Jep395RecordCodecProvider@4fbc516f]}, clusterSettings={hosts=[127.0.0.1:27017], srvHost=db-salespage.h9186rq.mongodb.net, srvServiceName=mongodb, mode=MULTIPLE, requiredClusterType=REPLICA_SET, requiredReplicaSetName='atlas-qi6936-shard-0', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=true, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
+2023-11-21 19:11:06,179 INFO c.m.d.l.SLF4JLogger [cluster-ClusterId{value='655c9e5aa512917bf80e604f', description='null'}-srv-db-salespage.h9186rq.mongodb.net] Adding discovered server ac-jh96ukw-shard-00-02.h9186rq.mongodb.net:27017 to client view of cluster
+2023-11-21 19:11:06,198 INFO c.m.d.l.SLF4JLogger [cluster-ClusterId{value='655c9e5aa512917bf80e604f', description='null'}-srv-db-salespage.h9186rq.mongodb.net] Adding discovered server ac-jh96ukw-shard-00-00.h9186rq.mongodb.net:27017 to client view of cluster
+2023-11-21 19:11:06,198 INFO c.m.d.l.SLF4JLogger [cluster-ClusterId{value='655c9e5aa512917bf80e604f', description='null'}-srv-db-salespage.h9186rq.mongodb.net] Adding discovered server ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017 to client view of cluster
+2023-11-21 19:11:06,360 DEBUG o.s.c.e.PropertySourcesPropertyResolver [main] Found key 'KAFKA_BOOTSTRAP_SERVERS' in PropertySource 'systemEnvironment' with value of type String
+2023-11-21 19:11:06,366 DEBUG o.s.c.e.PropertySourcesPropertyResolver [main] Found key 'KAFKA_USERNAME' in PropertySource 'systemEnvironment' with value of type String
+2023-11-21 19:11:06,366 DEBUG o.s.c.e.PropertySourcesPropertyResolver [main] Found key 'KAFKA_PASSWORD' in PropertySource 'systemEnvironment' with value of type String
+2023-11-21 19:11:06,366 DEBUG o.s.c.e.PropertySourcesPropertyResolver [main] Found key 'KAFKA_USERNAME' in PropertySource 'systemEnvironment' with value of type String
+2023-11-21 19:11:06,366 DEBUG o.s.c.e.PropertySourcesPropertyResolver [main] Found key 'KAFKA_PASSWORD' in PropertySource 'systemEnvironment' with value of type String
+2023-11-21 19:11:06,459 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration [main] 
+
+Using generated security password: 20feb87d-ca86-4d24-92b2-43f0c4ff826d
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-11-21 19:11:06,515 INFO c.m.d.l.SLF4JLogger [cluster-rtt-ClusterId{value='655c9e5aa512917bf80e604f', description='null'}-ac-jh96ukw-shard-00-00.h9186rq.mongodb.net:27017] Opened connection [connectionId{localValue:4, serverValue:668155}] to ac-jh96ukw-shard-00-00.h9186rq.mongodb.net:27017
+2023-11-21 19:11:06,517 INFO c.m.d.l.SLF4JLogger [cluster-ClusterId{value='655c9e5aa512917bf80e604f', description='null'}-ac-jh96ukw-shard-00-00.h9186rq.mongodb.net:27017] Opened connection [connectionId{localValue:1, serverValue:668155}] to ac-jh96ukw-shard-00-00.h9186rq.mongodb.net:27017
+2023-11-21 19:11:06,518 INFO c.m.d.l.SLF4JLogger [cluster-ClusterId{value='655c9e5aa512917bf80e604f', description='null'}-ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017] Opened connection [connectionId{localValue:3, serverValue:677540}] to ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017
+2023-11-21 19:11:06,518 INFO c.m.d.l.SLF4JLogger [cluster-rtt-ClusterId{value='655c9e5aa512917bf80e604f', description='null'}-ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017] Opened connection [connectionId{localValue:2, serverValue:677542}] to ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017
+2023-11-21 19:11:06,518 INFO c.m.d.l.SLF4JLogger [cluster-ClusterId{value='655c9e5aa512917bf80e604f', description='null'}-ac-jh96ukw-shard-00-00.h9186rq.mongodb.net:27017] Monitor thread successfully connected to server with description ServerDescription{address=ac-jh96ukw-shard-00-00.h9186rq.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=17, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=223819500, setName='atlas-qi6936-shard-0', canonicalAddress=ac-jh96ukw-shard-00-00.h9186rq.mongodb.net:27017, hosts=[ac-jh96ukw-shard-00-00.h9186rq.mongodb.net:27017, ac-jh96ukw-shard-00-02.h9186rq.mongodb.net:27017, ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017], passives=[], arbiters=[], primary='ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_EAST_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=1, topologyVersion=TopologyVersion{processId=65328d84437da749b5e138de, counter=4}, lastWriteDate=Tue Nov 21 19:12:18 ICT 2023, lastUpdateTimeNanos=1391339885800500}
+2023-11-21 19:11:06,518 INFO c.m.d.l.SLF4JLogger [cluster-ClusterId{value='655c9e5aa512917bf80e604f', description='null'}-ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017] Monitor thread successfully connected to server with description ServerDescription{address=ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=17, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=224287200, setName='atlas-qi6936-shard-0', canonicalAddress=ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017, hosts=[ac-jh96ukw-shard-00-00.h9186rq.mongodb.net:27017, ac-jh96ukw-shard-00-02.h9186rq.mongodb.net:27017, ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017], passives=[], arbiters=[], primary='ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_EAST_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=7fffffff0000000000000064, setVersion=1, topologyVersion=TopologyVersion{processId=65328f60a8f6f1b8e8a3689f, counter=6}, lastWriteDate=Tue Nov 21 19:12:18 ICT 2023, lastUpdateTimeNanos=1391339886243100}
+2023-11-21 19:11:06,519 INFO c.m.d.l.SLF4JLogger [cluster-rtt-ClusterId{value='655c9e5aa512917bf80e604f', description='null'}-ac-jh96ukw-shard-00-02.h9186rq.mongodb.net:27017] Opened connection [connectionId{localValue:5, serverValue:661023}] to ac-jh96ukw-shard-00-02.h9186rq.mongodb.net:27017
+2023-11-21 19:11:06,520 INFO c.m.d.l.SLF4JLogger [cluster-ClusterId{value='655c9e5aa512917bf80e604f', description='null'}-ac-jh96ukw-shard-00-02.h9186rq.mongodb.net:27017] Opened connection [connectionId{localValue:6, serverValue:661023}] to ac-jh96ukw-shard-00-02.h9186rq.mongodb.net:27017
+2023-11-21 19:11:06,521 INFO c.m.d.l.SLF4JLogger [cluster-ClusterId{value='655c9e5aa512917bf80e604f', description='null'}-ac-jh96ukw-shard-00-02.h9186rq.mongodb.net:27017] Monitor thread successfully connected to server with description ServerDescription{address=ac-jh96ukw-shard-00-02.h9186rq.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=17, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=225757100, setName='atlas-qi6936-shard-0', canonicalAddress=ac-jh96ukw-shard-00-02.h9186rq.mongodb.net:27017, hosts=[ac-jh96ukw-shard-00-00.h9186rq.mongodb.net:27017, ac-jh96ukw-shard-00-02.h9186rq.mongodb.net:27017, ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017], passives=[], arbiters=[], primary='ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_EAST_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=1, topologyVersion=TopologyVersion{processId=653291f4b5da4400b63a4e19, counter=3}, lastWriteDate=Tue Nov 21 19:12:18 ICT 2023, lastUpdateTimeNanos=1391339888705100}
+2023-11-21 19:11:06,522 INFO c.m.d.l.SLF4JLogger [cluster-ClusterId{value='655c9e5aa512917bf80e604f', description='null'}-ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017] Setting max election id to 7fffffff0000000000000064 from replica set primary ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017
+2023-11-21 19:11:06,522 INFO c.m.d.l.SLF4JLogger [cluster-ClusterId{value='655c9e5aa512917bf80e604f', description='null'}-ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017] Setting max set version to 1 from replica set primary ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017
+2023-11-21 19:11:06,522 INFO c.m.d.l.SLF4JLogger [cluster-ClusterId{value='655c9e5aa512917bf80e604f', description='null'}-ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017] Discovered replica set primary ac-jh96ukw-shard-00-01.h9186rq.mongodb.net:27017
+2023-11-21 19:11:06,542 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5598dff2, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@92b1bda, org.springframework.security.web.context.SecurityContextPersistenceFilter@603faaad, org.springframework.security.web.header.HeaderWriterFilter@67e1a5fd, org.springframework.security.web.csrf.CsrfFilter@2ec23ec3, org.springframework.security.web.authentication.logout.LogoutFilter@4fc2933e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@29a50a11, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@dddcd91, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@57bfca3a, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4b62f1ba, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@28d16af8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@58932d08, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@58690f5e, org.springframework.security.web.session.SessionManagementFilter@6cb3463b, org.springframework.security.web.access.ExceptionTranslationFilter@764a3867, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@138b9abe]
+2023-11-21 19:11:06,696 DEBUG o.s.w.f.GenericFilterBean [main] Filter 'characterEncodingFilter' configured for use
+2023-11-21 19:11:06,696 DEBUG o.s.w.f.GenericFilterBean [main] Filter 'formContentFilter' configured for use
+2023-11-21 19:11:06,696 DEBUG o.s.w.f.GenericFilterBean [main] Filter 'requestContextFilter' configured for use
+2023-11-21 19:11:06,697 DEBUG o.s.w.f.GenericFilterBean [main] Filter 'springSecurityFilterChain' configured for use
+2023-11-21 19:11:06,699 INFO o.e.j.s.h.ContextHandler$Context [main] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-21 19:11:06,699 INFO o.s.w.s.FrameworkServlet [main] Initializing Servlet 'dispatcherServlet'
+2023-11-21 19:11:06,699 DEBUG o.s.w.s.DispatcherServlet [main] Detected StandardServletMultipartResolver
+2023-11-21 19:11:06,699 DEBUG o.s.w.s.DispatcherServlet [main] Detected AcceptHeaderLocaleResolver
+2023-11-21 19:11:06,699 DEBUG o.s.w.s.DispatcherServlet [main] Detected FixedThemeResolver
+2023-11-21 19:11:06,700 DEBUG o.s.w.s.DispatcherServlet [main] Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@11c999da
+2023-11-21 19:11:06,700 DEBUG o.s.w.s.DispatcherServlet [main] Detected org.springframework.web.servlet.support.SessionFlashMapManager@68c4a860
+2023-11-21 19:11:06,700 DEBUG o.s.w.s.FrameworkServlet [main] enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2023-11-21 19:11:06,701 INFO o.s.w.s.FrameworkServlet [main] Completed initialization in 2 ms
+2023-11-21 19:11:06,717 INFO o.e.j.s.AbstractConnector [main] Started ServerConnector@7cff3f1d{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2023-11-21 19:11:06,718 INFO o.s.b.w.e.j.JettyWebServer [main] Jetty started on port(s) 8080 (http/1.1) with context path '/'
+2023-11-21 19:11:06,771 DEBUG o.s.b.a.l.ConditionEvaluationReportLoggingListener [main] 
 
 
 ============================
@@ -145,6 +188,19 @@ Positive matches:
 
    HttpClientConfiguration.ApacheHttpClientConfiguration#connManFactory matched:
       - @ConditionalOnMissingBean (types: org.springframework.cloud.commons.httpclient.ApacheHttpClientConnectionManagerFactory; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   HttpClientConfiguration.OkHttpClientConfiguration matched:
+      - @ConditionalOnClass found required class 'okhttp3.OkHttpClient' (OnClassCondition)
+      - @ConditionalOnProperty (spring.cloud.httpclientfactories.ok.enabled) matched (OnPropertyCondition)
+
+   HttpClientConfiguration.OkHttpClientConfiguration#connPoolFactory matched:
+      - @ConditionalOnMissingBean (types: org.springframework.cloud.commons.httpclient.OkHttpClientConnectionPoolFactory; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   HttpClientConfiguration.OkHttpClientConfiguration#okHttpClientBuilder matched:
+      - @ConditionalOnMissingBean (types: okhttp3.OkHttpClient$Builder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   HttpClientConfiguration.OkHttpClientConfiguration#okHttpClientFactory matched:
+      - @ConditionalOnMissingBean (types: org.springframework.cloud.commons.httpclient.OkHttpClientFactory; SearchStrategy: all) did not find any beans (OnBeanCondition)
 
    HttpEncodingAutoConfiguration matched:
       - @ConditionalOnClass found required class 'org.springframework.web.filter.CharacterEncodingFilter' (OnClassCondition)
@@ -978,10 +1034,6 @@ Negative matches:
       Did not match:
          - @ConditionalOnClass did not find required class 'org.hibernate.engine.spi.SessionImplementor' (OnClassCondition)
 
-   HttpClientConfiguration.OkHttpClientConfiguration:
-      Did not match:
-         - @ConditionalOnClass did not find required class 'okhttp3.OkHttpClient' (OnClassCondition)
-
    HttpHandlerAutoConfiguration:
       Did not match:
          - @ConditionalOnClass did not find required class 'org.springframework.web.reactive.DispatcherHandler' (OnClassCondition)
@@ -1533,68 +1585,14 @@ Unconditional classes:
 
 
 
-2023-11-21 19:07:17,592 ERROR o.s.b.SpringApplication [main] Application run failed
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'paymentSchedule': Unsatisfied dependency expressed through field 'serverService'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'com.salespage.salepageschedule.domains.services.ServerService': Unexpected exception during bean creation; nested exception is java.lang.IllegalStateException: Method ServerService#updateMbToday() not annotated with HTTP method type (ex. GET, POST)
-Warnings:
-- 
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:659) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:639) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.23.jar:5.3.23]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.23.jar:5.3.23]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.5.jar:2.7.5]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) ~[spring-boot-2.7.5.jar:2.7.5]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.5.jar:2.7.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-2.7.5.jar:2.7.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-2.7.5.jar:2.7.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-2.7.5.jar:2.7.5]
-	at com.salespage.salepageschedule.SalesPageScheduleApplication.main(SalesPageScheduleApplication.java:14) ~[classes/:?]
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'com.salespage.salepageschedule.domains.services.ServerService': Unexpected exception during bean creation; nested exception is java.lang.IllegalStateException: Method ServerService#updateMbToday() not annotated with HTTP method type (ex. GET, POST)
-Warnings:
-- 
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:555) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:656) ~[spring-beans-5.3.23.jar:5.3.23]
-	... 20 more
-Caused by: java.lang.IllegalStateException: Method ServerService#updateMbToday() not annotated with HTTP method type (ex. GET, POST)
-Warnings:
-- 
-	at feign.Util.checkState(Util.java:136) ~[feign-core-11.10.jar:?]
-	at feign.Contract$BaseContract.parseAndValidateMetadata(Contract.java:115) ~[feign-core-11.10.jar:?]
-	at org.springframework.cloud.openfeign.support.SpringMvcContract.parseAndValidateMetadata(SpringMvcContract.java:193) ~[spring-cloud-openfeign-core-3.1.5.jar:3.1.5]
-	at feign.Contract$BaseContract.parseAndValidateMetadata(Contract.java:65) ~[feign-core-11.10.jar:?]
-	at feign.ReflectiveFeign$ParseHandlersByName.apply(ReflectiveFeign.java:151) ~[feign-core-11.10.jar:?]
-	at feign.ReflectiveFeign.newInstance(ReflectiveFeign.java:49) ~[feign-core-11.10.jar:?]
-	at feign.Feign$Builder.target(Feign.java:205) ~[feign-core-11.10.jar:?]
-	at org.springframework.cloud.openfeign.DefaultTargeter.target(DefaultTargeter.java:30) ~[spring-cloud-openfeign-core-3.1.5.jar:3.1.5]
-	at org.springframework.cloud.openfeign.FeignClientFactoryBean.getTarget(FeignClientFactoryBean.java:451) ~[spring-cloud-openfeign-core-3.1.5.jar:3.1.5]
-	at org.springframework.cloud.openfeign.FeignClientFactoryBean.getObject(FeignClientFactoryBean.java:402) ~[spring-cloud-openfeign-core-3.1.5.jar:3.1.5]
-	at org.springframework.cloud.openfeign.FeignClientsRegistrar.lambda$registerFeignClient$0(FeignClientsRegistrar.java:235) ~[spring-cloud-openfeign-core-3.1.5.jar:3.1.5]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.obtainFromSupplier(AbstractAutowireCapableBeanFactory.java:1249) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311) ~[spring-beans-5.3.23.jar:5.3.23]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:656) ~[spring-beans-5.3.23.jar:5.3.23]
-	... 20 more
+2023-11-21 19:11:15,430 DEBUG o.s.c.e.PropertySourcesPropertyResolver [main] Found key 'spring.liveBeansView.mbeanDomain' in PropertySource 'systemProperties' with value of type String
+2023-11-21 19:11:15,435 INFO o.s.b.StartupInfoLogger [main] Started SalesPageScheduleApplication in 12.804 seconds (JVM running for 13.632)
+2023-11-21 19:11:15,437 DEBUG o.s.b.a.ApplicationAvailabilityBean [main] Application availability state LivenessState changed to CORRECT
+2023-11-21 19:11:15,440 DEBUG o.s.b.a.ApplicationAvailabilityBean [main] Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2023-11-21 19:11:15,444 INFO c.s.s.a.s.PaymentSchedule [scheduling-1] process productStatisticToday: 1700568675432
+2023-11-21 19:11:25,559 DEBUG o.s.b.a.ApplicationAvailabilityBean [SpringApplicationShutdownHook] Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2023-11-21 19:11:25,560 DEBUG o.s.c.s.AbstractApplicationContext [SpringApplicationShutdownHook] Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7f4d9395, started on Tue Nov 21 19:11:03 ICT 2023
+2023-11-21 19:11:25,569 INFO o.e.j.s.AbstractConnector [SpringApplicationShutdownHook] Stopped ServerConnector@7cff3f1d{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2023-11-21 19:11:25,569 INFO o.e.j.s.s.HouseKeeper [SpringApplicationShutdownHook] node0 Stopped scavenging
+2023-11-21 19:11:25,570 INFO o.e.j.s.h.ContextHandler$Context [SpringApplicationShutdownHook] Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-11-21 19:11:25,571 INFO o.e.j.s.h.ContextHandler [SpringApplicationShutdownHook] Stopped o.s.b.w.e.j.JettyEmbeddedWebAppContext@d25e878{application,/,[file:///C:/Users/Admin/AppData/Local/Temp/jetty-docbase.8080.10284258924550362058/, jar:file:/C:/Users/Admin/.m2/repository/org/webjars/swagger-ui/4.17.1/swagger-ui-4.17.1.jar!/META-INF/resources],STOPPED}

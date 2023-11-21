@@ -28,7 +28,6 @@ public class PaymentSchedule {
   @Scheduled(fixedDelay = 1000 * 60 * 60)
   public void updateTpPre() {
     log.info("process updateTpPre: {}", System.currentTimeMillis());
-
     serverService.updateTpPre();
   }
 }
