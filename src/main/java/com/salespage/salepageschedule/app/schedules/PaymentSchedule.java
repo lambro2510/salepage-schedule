@@ -7,12 +7,9 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 @Service
 @Log4j2
-public class StatisticSchedule {
+public class PaymentSchedule {
   @Autowired
   @Lazy
   private ServerService serverService;
@@ -20,21 +17,19 @@ public class StatisticSchedule {
   @Scheduled(fixedDelay = 1000 * 30)
   public void productStatisticToday() {
     log.info("process productStatisticToday: {}", System.currentTimeMillis());
+    serverService.updateMbToday();
+  }
 
-    serverService.statisticToday();
+  @Scheduled(fixedDelay = 1000 * 30)
+  public void updateTpToday() {
+    log.info("process updateTpToday: {}", System.currentTimeMillis());
+    serverService.updateTpToday();
   }
 
   @Scheduled(fixedDelay = 1000 * 60 * 60)
-  public void productStatisticPreDay() {
-    log.info("process productStatisticPreDay: {}", System.currentTimeMillis());
+  public void updateTpPre() {
+    log.info("process updateTpPre: {}", System.currentTimeMillis());
 
-    serverService.statisticPreDay();
-  }
-
-  @Scheduled(initialDelay = 5000, fixedDelay = 1000 * 30)
-  public void updateToHotProduct() {
-    log.info("process updateToHotProduct: {}", System.currentTimeMillis());
-
-    serverService.updateHotProduct();
+    serverService.updateTpPre();
   }
 }
