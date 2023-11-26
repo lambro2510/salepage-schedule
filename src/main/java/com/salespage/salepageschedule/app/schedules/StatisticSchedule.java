@@ -16,7 +16,7 @@ public class StatisticSchedule {
   @Autowired
   private ServerService serverService;
 
-  @Scheduled(fixedDelay = 1000 * 30)
+  @Scheduled(fixedDelay = 1000 * 5)
   public void productStatisticToday() {
     log.info("process productStatisticToday: {}", System.currentTimeMillis());
 
