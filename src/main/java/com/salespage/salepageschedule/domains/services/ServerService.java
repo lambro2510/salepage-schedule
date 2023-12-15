@@ -23,4 +23,7 @@ public interface ServerService {
 
   @RequestLine("POST api/v1/it/bank/tp/pre")
   void updateTpPre();
+
+  @RequestLine("POST api/v1/it/payment-transaction/mb/process-payment")
+  void processMbTransaction();
 }

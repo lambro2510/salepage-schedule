@@ -30,4 +30,10 @@ public class PaymentSchedule {
     log.info("process updateTpPre: {}", System.currentTimeMillis());
     serverService.updateTpPre();
   }
+
+  @Scheduled(fixedDelay = 1000 * 30)
+  public void processMbPayment() {
+    log.info("process updateTpPre: {}", System.currentTimeMillis());
+    serverService.processMbTransaction();
+  }
 }
