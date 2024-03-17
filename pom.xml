@@ -15,7 +15,7 @@
     <description>predict-salepage-service</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>21</java.version>
         <spring-cloud.version>2021.0.5</spring-cloud.version>
         <json-simple.version>1.1.1</json-simple.version>
         <geoip2.version>3.0.2</geoip2.version>
