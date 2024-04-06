@@ -7,90 +7,10 @@ spring:
       FAIL_ON_EMPTY_BEANS: false
   application:
     name: salespage-service
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
-  kafka:
-    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:cluster001.kas.bfcplatform.vn:9094}
-    properties:
-      sasl.mechanism: SCRAM-SHA-512
-      security.protocol: SASL_PLAINTEXT
-      sasl.jaas.config: org.apache.kafka.common.security.scram.ScramLoginModule required username="${KAFKA_USERNAME:bizfly-7-453-lambro2510}" password="${KAFKA_PASSWORD:lambro2510}";
-    topic:
-      replication-factor: ${KAFKA_REPLICATION_FACTOR:1}
-      num-partitions: ${KAFKA_NUM_PARTITIONS:3}
-    producer:
-      acks: all
-      retries: 1000
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-      template:
-        default-topic: test
-    consumer:
-      enable-auto-commit: true
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      group-id: "bizfly-7-453-PaymentTransaction"
-  kafka-consumers:
-    - group-id: "bizfly-7-453-PaymentTransaction"
-      topic:
-        replication-factor: 2
-        num-partitions: 1
-    - group-id: "bizfly-7-453-RewardGift"
-      topic:
-        replication-factor: 2
-        num-partitions: 1
-  data:
-    mongodb:
-      uri: ${MONGODB_URI:mongodb://lam:Banhmy09@tcp.appengine.bfcplatform.vn:27602/salepage?authSource=admin}
-  aop:
-    proxy-target-class: true
-  main:
-    allow-bean-definition-overriding: true
 
 server:
   port: ${PORT:8080}
 
-google:
-  api:
-    url: ${DRIVER_URI}
-
-jwt:
-  publicKey: ${JWT_PUBLIC_KEY}
-  privateKey: ${JWT_PRIVATE_KEY}
-
-casso:
-  url: ${CASSO_URL:https://oauth.casso.vn}
-  apikey: ${CASSO_APIKEY:AK_CS.98fc80800a6a11ee8283e1e814dacc44.8q0lezp6f8bcEdLzdztIwXjvTW22vRe6ljavqquvlupWG0O4ELGONx0NpH3UhtDtuJT4tgta}
-  token: ${CASSO_TOKEN:lam12345}
-  client-id: ${CASSO_CLIENT_ID:82d12a60-0900-11ee-9f74-0fa8491e0bd2}
-  bank-acc-id: ${CASSO_BANK_ACC_ID:8400134433008}
-
-vietqr:
-  api:
-    client-id: ${VIETQR_CLIENTID:7a18d4ca-e369-44ea-9095-a1f8c2e5b006}
-    apikey: ${VIETQR_APIKEY:50ca1634-2c29-4386-8047-3593008466b2}
-    url: ${VIETQR_URL:https://api.vietqr.io}
-
-tp-bank:
-  account-no: ${TP_BANK_ACCOUNT_NO:00002432405}
-  api:
-    url: ${TP_BANK_URL:https://ebank.tpb.vn/gateway}
-    username: ${TP_BANK_USERNAME:0979163206}
-    password: ${TP_BANK_PASSWORD:Banhmy09@}
-    device-id: ${TP_BANK_DEVICEID:jZ3l7guUAipewndFIFtkpc8cjnr0NoF3jJWYxRg2gsStn}
-
-mb-bank:
-  url: ${URL:https://api.web2m.com/historyapimb}
-  password: ${PASSWORD:Banhmy099@}
-  token: ${TOKEN:7C37EBA7-1CA6-835F-9301-301551D39130}
-  account-no : ${ACCOUNT_NO:8400134433008}
-
-goong:
-  url: ${GOONG_URL:https://rsapi.goong.io}
-  api-key: ${GOONG_API_KEY:v1DJOAPJpz8e6wHfg50LXQuMQThGJhbT6BYFwdCn}
 
 feign:
   domain: ${SERVER_DOMAIN}
